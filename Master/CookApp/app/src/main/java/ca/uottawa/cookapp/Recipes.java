@@ -13,14 +13,15 @@ import java.util.ArrayList;
 /**
  * Created by shawnco on 11/22/16.
  */
-public class Favorites extends Fragment {
+
+public class Recipes extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.favorites_list, container, false);
+        View view =  inflater.inflate(R.layout.recipes_layout, container, false);
         ListView listView = (ListView) view.findViewById(R.id.list);
 
         String[] values = new String[]{
-                "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06", "Item 07", "Item 08","Item 09", "Item 10", "Item 11", "Item 12","Item 13", "Item 14", "Item 15", "Item 16",
+                "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06"
         };
 
         final ArrayList<String> list = new ArrayList<String>();
