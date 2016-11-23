@@ -90,17 +90,17 @@ public class RecipeList extends AppCompatActivity {
         switch (id){
             case R.id.action_filter:
                 openFilterActivity();
-
+                break;
             case R.id.action_settings:
                 openSettingsActivity();
-
+                break;
         }
-
+/*
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
+*/
         return super.onOptionsItemSelected(item);
     }
 
