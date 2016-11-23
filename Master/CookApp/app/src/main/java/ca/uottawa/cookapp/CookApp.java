@@ -22,7 +22,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-public class RecipeList extends AppCompatActivity {
+public class CookApp extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -95,12 +95,7 @@ public class RecipeList extends AppCompatActivity {
                 openSettingsActivity();
                 break;
         }
-/*
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-*/
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -167,9 +162,9 @@ public class RecipeList extends AppCompatActivity {
 
             switch(position){
                 case 0:
-                    return new Recipes();
+                    return new RecipesListFragment();
                 case 1:
-                    return new Favorites();
+                    return new FavoritesListFragment();
                 default:
                     return PlaceholderFragment.newInstance(position + 1);
 

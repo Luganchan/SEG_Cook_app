@@ -101,8 +101,8 @@ public class FilterActivity extends AppCompatActivity {
          * Returns a new instance of this fragment for the given section
          * number.
          */
-        public static RecipeList.PlaceholderFragment newInstance(int sectionNumber) {
-            RecipeList.PlaceholderFragment fragment = new RecipeList.PlaceholderFragment();
+        public static CookApp.PlaceholderFragment newInstance(int sectionNumber) {
+            CookApp.PlaceholderFragment fragment = new CookApp.PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
@@ -141,7 +141,7 @@ public class FilterActivity extends AppCompatActivity {
                 case 2:
                     return new DinerFilterFragment();
                 default:
-                    return RecipeList.PlaceholderFragment.newInstance(position + 1);
+                    return CookApp.PlaceholderFragment.newInstance(position + 1);
 
             }
 

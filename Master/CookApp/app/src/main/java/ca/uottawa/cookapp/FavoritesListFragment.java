@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Created by shawnco on 11/22/16.
  */
-public class Favorites extends Fragment {
+public class FavoritesListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.favorites_list, container, false);
