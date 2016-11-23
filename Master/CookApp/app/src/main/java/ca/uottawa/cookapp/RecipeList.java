@@ -90,6 +90,10 @@ public class RecipeList extends AppCompatActivity {
         switch (id){
             case R.id.action_filter:
                 openFilterActivity();
+
+            case R.id.action_settings:
+                openSettingsActivity();
+
         }
 
         //noinspection SimplifiableIfStatement
@@ -99,6 +103,12 @@ public class RecipeList extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void openSettingsActivity(){
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
 
     public void openFilterActivity(){
         Intent intent = new Intent(this, FilterActivity.class);
