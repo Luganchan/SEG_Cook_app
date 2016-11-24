@@ -49,11 +49,10 @@ public class Recipe extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    Button saveButton;
+
     TextView title, discription;
     public void setEditable(){
-        saveButton = (Button) findViewById(R.id.save_button);
-        saveButton.setVisibility(View.VISIBLE);
+
 
         title = (TextView) findViewById(R.id.recipe_title);
 

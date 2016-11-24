@@ -15,10 +15,8 @@ public class AddRecipeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recipe_layout);
+        setContentView(R.layout.add_recipe_layout);
         setTitle("Add Recipe");
         setVisible(true);
-        saveButton = (Button) findViewById(R.id.save_button);
-        saveButton.setVisibility(View.VISIBLE);
     }
 }
