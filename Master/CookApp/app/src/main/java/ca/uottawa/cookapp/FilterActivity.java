@@ -132,6 +132,8 @@ public class FilterActivity extends AppCompatActivity {
                     return new LunchFilterFragment();
                 case 2:
                     return new DinerFilterFragment();
+                case 3:
+                    return new MyPantryFragment();
                 default:
                     return CookApp.PlaceholderFragment.newInstance(position + 1);
 
@@ -141,8 +143,8 @@ public class FilterActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            // Show 4 total pages.
+            return 4;
         }
 
         @Override
@@ -154,6 +156,8 @@ public class FilterActivity extends AppCompatActivity {
                     return "Lunch";
                 case 2:
                     return "Dinner";
+                case 3:
+                    return "My Pantry";
             }
             return null;
         }
@@ -183,6 +187,12 @@ public class FilterActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             return inflater.inflate(R.layout.diner_filter_fragment, container, false);
+        }
+    }
+    public static class MyPantryFragment extends Fragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.my_pantry_filter, container, false);
         }
     }
 

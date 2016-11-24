@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <CheckBox
+            android:text="Engridients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/engridients" />
+
+        <CheckBox
+            android:text="Eggs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/eggs" />
+
+        <CheckBox
+            android:text="Bread"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bread" />
+        <CheckBox
+            android:text="etc.."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etc" />
+    </LinearLayout>
+</RelativeLayout>

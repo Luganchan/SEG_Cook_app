@@ -178,6 +178,8 @@ public class CookApp extends AppCompatActivity {
                     return new RecipesListFragment();
                 case 1:
                     return new FavoritesListFragment();
+                case 2:
+                    return new GroceryListFragment();
                 default:
                     return PlaceholderFragment.newInstance(position + 1);
 
@@ -188,7 +190,7 @@ public class CookApp extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 3;
         }
 
         @Override
@@ -198,6 +200,8 @@ public class CookApp extends AppCompatActivity {
                     return "Recipes";
                 case 1:
                     return "Favorites";
+                case 2:
+                    return "Grocery List";
             }
             return null;
         }
@@ -252,6 +256,35 @@ public class CookApp extends AppCompatActivity {
 
             String[] values = new String[]{
                     "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06", "Item 07", "Item 08","Item 09", "Item 10", "Item 11", "Item 12","Item 13", "Item 14", "Item 15", "Item 16",
+            };
+
+            final ArrayList<String> list = new ArrayList<String>();
+            for (int i = 0; i < values.length; ++i) {
+                list.add(values[i]);
+            }
+
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), values);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                    final String item = (String) parent.getItemAtPosition(position);
+//Do something with the string that you just got!
+                }
+            });
+
+            return view;
+        }
+    }
+
+    public static class GroceryListFragment extends Fragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view =  inflater.inflate(R.layout.favorites_list, container, false);
+            ListView listView = (ListView) view.findViewById(R.id.list);
+
+            String[] values = new String[]{
+                    "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06", "Item 07", "Item 08","Item 09", "Item 10", "Item 11"
             };
 
             final ArrayList<String> list = new ArrayList<String>();
