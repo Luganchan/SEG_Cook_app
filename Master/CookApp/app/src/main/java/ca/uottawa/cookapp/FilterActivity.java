@@ -40,6 +40,7 @@ public class FilterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.filter_list);
+        setTitle("Filter");
 
 
         // Create the adapter that will return a fragment for each of the three
@@ -166,4 +167,33 @@ public class FilterActivity extends AppCompatActivity {
             return null;
         }
     }
+
+    /*
+    The three next classes make the three fragments of the filter activity.
+     */
+
+    public static class BreakfastFilterFragment extends Fragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.breakfast_filter_fragment, container, false);
+        }
+    }
+
+
+    public static class LunchFilterFragment extends Fragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.lunch_filter_fragment, container, false);
+        }
+    }
+
+
+    public static class DinerFilterFragment extends Fragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.diner_filter_fragment, container, false);
+        }
+    }
+
+
 }

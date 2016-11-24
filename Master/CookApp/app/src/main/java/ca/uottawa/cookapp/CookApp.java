@@ -20,7 +20,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import static java.security.AccessController.getContext;
 
 public class CookApp extends AppCompatActivity {
 
@@ -39,12 +45,14 @@ public class CookApp extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    public Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_list);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -63,12 +71,17 @@ public class CookApp extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               openAddRecipe();
             }
         });
 
     }
+
+    public void openAddRecipe(){
+        Intent intent = new Intent(this, AddRecipeActivity.class);
+        startActivity(intent);
+    }
+
 
 
     @Override
@@ -189,4 +202,76 @@ public class CookApp extends AppCompatActivity {
             return null;
         }
     }
+
+    /*
+    The two next classes make the fragments of the fragments of the CookApp activity.
+     */
+
+    public static class RecipesListFragment extends Fragment{
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view =  inflater.inflate(R.layout.recipes_layout, container, false);
+            ListView listView = (ListView) view.findViewById(R.id.list);
+
+
+
+            String[] values = new String[]{
+                    "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06"
+            };
+
+            final ArrayList<String> list = new ArrayList<String>();
+            for (int i = 0; i < values.length; ++i) {
+                list.add(values[i]);
+            }
+
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), values);
+            listView.setAdapter(adapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                    final String item = (String) parent.getItemAtPosition(position);
+                    openRecipe();
+                }
+            });
+
+            return view;
+        }
+        public void openRecipe(){
+            Intent intent = new Intent(getContext(), Recipe.class);
+            startActivity(intent);
+        }
+    }
+
+
+    public static class FavoritesListFragment extends Fragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View view =  inflater.inflate(R.layout.favorites_list, container, false);
+            ListView listView = (ListView) view.findViewById(R.id.list);
+
+            String[] values = new String[]{
+                    "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06", "Item 07", "Item 08","Item 09", "Item 10", "Item 11", "Item 12","Item 13", "Item 14", "Item 15", "Item 16",
+            };
+
+            final ArrayList<String> list = new ArrayList<String>();
+            for (int i = 0; i < values.length; ++i) {
+                list.add(values[i]);
+            }
+
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), values);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                    final String item = (String) parent.getItemAtPosition(position);
+//Do something with the string that you just got!
+                }
+            });
+
+            return view;
+        }
+    }
 }
+
+
