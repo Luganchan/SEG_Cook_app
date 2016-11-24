@@ -61,8 +61,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end|bottom"
                             android:layout_margin="@dimen/fab_margin"
-                            android:src="/home/shawnco/Programming/SEG/CookApp/SEG_Cook_app/Master/CookApp/app/src/main/res/drawable/favorite_heart_button.png"
-                            app:backgroundTint="@android:color/holo_red_dark" />
+                            android:src="@android:drawable/ic_menu_save"
+                            app:backgroundTint="?attr/actionMenuTextColor" />
 
                         <android.support.design.widget.FloatingActionButton
                             android:id="@+id/share"
@@ -100,7 +100,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end|bottom"
                             android:layout_margin="@dimen/fab_margin"
-                            android:src="?android:attr/floatingToolbarOpenDrawable"
+                            android:src="@android:drawable/ic_dialog_dialer"
                             android:layout_marginRight="20dp"
                             android:layout_weight="0.09" />
                     </LinearLayout>
