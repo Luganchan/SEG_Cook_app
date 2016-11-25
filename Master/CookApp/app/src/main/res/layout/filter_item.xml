@@ -8,21 +8,9 @@
         android:layout_height="match_parent">
 
         <CheckBox
-            android:text="Cereal"
+            android:text="CheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cereal" />
-
-        <CheckBox
-            android:text="Eggs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/eggs" />
-
-        <CheckBox
-            android:text="Bread"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bread" />
+            android:id="@+id/filter_checkbox" />
     </LinearLayout>
 </RelativeLayout>

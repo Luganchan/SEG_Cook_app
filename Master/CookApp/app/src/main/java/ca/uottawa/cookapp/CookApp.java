@@ -50,7 +50,7 @@ public class CookApp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipe_list);
+        setContentView(R.layout.cook_app);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -152,7 +152,7 @@ public class CookApp extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_recipe_list, container, false);
+            View rootView = inflater.inflate(R.layout.cook_app, container, false);
 
             return rootView;
         }
@@ -214,7 +214,7 @@ public class CookApp extends AppCompatActivity {
     public static class RecipesListFragment extends Fragment{
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view =  inflater.inflate(R.layout.recipes_layout, container, false);
+            View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
 
 
@@ -251,7 +251,7 @@ public class CookApp extends AppCompatActivity {
     public static class FavoritesListFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view =  inflater.inflate(R.layout.favorites_list, container, false);
+            View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
 
             String[] values = new String[]{
@@ -284,7 +284,7 @@ public class CookApp extends AppCompatActivity {
     public static class GroceryListFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.favorites_list, container, false);
+            View view = inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
 
             String[] values = new String[]{

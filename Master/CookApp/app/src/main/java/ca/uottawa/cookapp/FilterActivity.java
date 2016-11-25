@@ -15,6 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * Created by shawnco on 11/23/16.
@@ -39,7 +42,7 @@ public class FilterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.filter_list);
+        setContentView(R.layout.filter_tab_layout);
         setTitle("Filter");
 
 
@@ -104,7 +107,7 @@ public class FilterActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_recipe_list, container, false);
+            View rootView = inflater.inflate(R.layout.cook_app, container, false);
 
             return rootView;
         }
@@ -170,7 +173,25 @@ public class FilterActivity extends AppCompatActivity {
     public static class BreakfastFilterFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.breakfast_filter_fragment, container, false);
+            View view =  inflater.inflate(R.layout.filter_fragments, container, false);
+            ListView listView = (ListView) view.findViewById(R.id.listview);
+
+
+
+            String[] values = new String[]{
+                    "Eggs", "Bacon", "Bread", "French Toast", "Cereal", "Yogurt"
+            };
+
+            final ArrayList<String> list = new ArrayList<String>();
+            for (int i = 0; i < values.length; ++i) {
+                list.add(values[i]);
+            }
+
+            FilterArrayAdapter adapter = new FilterArrayAdapter(this.getContext(), values);
+            listView.setAdapter(adapter);
+
+
+            return view;
         }
     }
 
@@ -178,7 +199,25 @@ public class FilterActivity extends AppCompatActivity {
     public static class LunchFilterFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.lunch_filter_fragment, container, false);
+            View view =  inflater.inflate(R.layout.filter_fragments, container, false);
+            ListView listView = (ListView) view.findViewById(R.id.listview);
+
+
+
+            String[] values = new String[]{
+                    "Entree", "Main", "Desert", "Pasta", "Soup", "Cheese"
+            };
+
+            final ArrayList<String> list = new ArrayList<String>();
+            for (int i = 0; i < values.length; ++i) {
+                list.add(values[i]);
+            }
+
+            FilterArrayAdapter adapter = new FilterArrayAdapter(this.getContext(), values);
+            listView.setAdapter(adapter);
+
+
+            return view;
         }
     }
 
@@ -186,13 +225,49 @@ public class FilterActivity extends AppCompatActivity {
     public static class DinerFilterFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.diner_filter_fragment, container, false);
+            View view =  inflater.inflate(R.layout.filter_fragments, container, false);
+            ListView listView = (ListView) view.findViewById(R.id.listview);
+
+
+
+            String[] values = new String[]{
+                    "Entree", "Main", "Desert", "Pasta", "Soup", "Cheese"
+            };
+
+            final ArrayList<String> list = new ArrayList<String>();
+            for (int i = 0; i < values.length; ++i) {
+                list.add(values[i]);
+            }
+
+            FilterArrayAdapter adapter = new FilterArrayAdapter(this.getContext(), values);
+            listView.setAdapter(adapter);
+
+
+            return view;
         }
     }
     public static class MyPantryFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.my_pantry_filter, container, false);
+            View view =  inflater.inflate(R.layout.filter_fragments, container, false);
+            ListView listView = (ListView) view.findViewById(R.id.listview);
+
+
+
+            String[] values = new String[]{
+                    "Engridients", "Bread", "Peanuts", "Chicken", "Beef", "Pasta"
+            };
+
+            final ArrayList<String> list = new ArrayList<String>();
+            for (int i = 0; i < values.length; ++i) {
+                list.add(values[i]);
+            }
+
+            FilterArrayAdapter adapter = new FilterArrayAdapter(this.getContext(), values);
+            listView.setAdapter(adapter);
+
+
+            return view;
         }
     }
 

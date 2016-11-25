@@ -16,7 +16,7 @@ public class RecipeArrayAdapter extends ArrayAdapter<String> {
     private final String[] values;
 
     public RecipeArrayAdapter(Context context, String[] values) {
-        super(context, R.layout.items, values);
+        super(context, R.layout.cook_app_items, values);
         this.context = context;
         this.values = values;
     }
@@ -24,7 +24,7 @@ public class RecipeArrayAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.items, parent, false);
+        View rowView = inflater.inflate(R.layout.cook_app_items, parent, false);
         TextView textView = (TextView) rowView.findViewById(R.id.line01);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
         textView.setText(values[position]);
