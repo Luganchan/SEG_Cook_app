@@ -269,22 +269,26 @@ public class CookApp extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     final String item = (String) parent.getItemAtPosition(position);
-//Do something with the string that you just got!
+                    openRecipe();
                 }
             });
 
             return view;
+        }
+        public void openRecipe(){
+            Intent intent = new Intent(getContext(), Recipe.class);
+            startActivity(intent);
         }
     }
 
     public static class GroceryListFragment extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view =  inflater.inflate(R.layout.favorites_list, container, false);
+            View view = inflater.inflate(R.layout.favorites_list, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
 
             String[] values = new String[]{
-                    "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06", "Item 07", "Item 08","Item 09", "Item 10", "Item 11"
+                    "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06", "Item 07", "Item 08", "Item 09", "Item 10", "Item 11"
             };
 
             final ArrayList<String> list = new ArrayList<String>();
@@ -298,11 +302,16 @@ public class CookApp extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     final String item = (String) parent.getItemAtPosition(position);
-//Do something with the string that you just got!
+                    openRecipe();
                 }
             });
 
             return view;
+        }
+
+        public void openRecipe() {
+            Intent intent = new Intent(getContext(), Recipe.class);
+            startActivity(intent);
         }
     }
 }
