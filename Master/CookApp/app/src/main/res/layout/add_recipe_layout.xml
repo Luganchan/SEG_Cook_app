@@ -100,7 +100,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end|bottom"
                             android:layout_margin="@dimen/fab_margin"
-                            android:src="@android:drawable/ic_dialog_dialer"
+                            android:src="@android:drawable/star_off"
                             android:layout_marginRight="20dp"
                             android:layout_weight="0.09" />
                     </LinearLayout>
@@ -112,4 +112,11 @@
         </LinearLayout>
 
     </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button2"
+        android:layout_gravity="right" />
 </LinearLayout>
