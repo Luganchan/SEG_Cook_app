@@ -6,6 +6,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -224,18 +225,25 @@ public class CookApp extends AppCompatActivity {
             View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
 
+            Ingredient bread = new Ingredient(ContextCompat.getDrawable(getContext(), R.drawable.bread));
+
+            Ingredient[] ingredients = new Ingredient[]{bread,bread,bread,bread,bread};
 
 
-            String[] values = new String[]{
-                    "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06"
+
+            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.bread), "pasta", ingredients );
+
+            Recipe[] recipes = new Recipe[]{
+                pasta,pasta,pasta,pasta,pasta,pasta,pasta,
+
             };
 
-            final ArrayList<String> list = new ArrayList<String>();
-            for (int i = 0; i < values.length; ++i) {
-                list.add(values[i]);
+            final ArrayList<Recipe> list = new ArrayList<Recipe>();
+            for (int i = 0; i < recipes.length; ++i) {
+                list.add(recipes[i]);
             }
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), values);
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), recipes);
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -260,18 +268,27 @@ public class CookApp extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
+            Ingredient bread = new Ingredient(ContextCompat.getDrawable(getContext(), R.drawable.bread));
 
-            String[] values = new String[]{
-                    "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06", "Item 07", "Item 08","Item 09", "Item 10", "Item 11", "Item 12","Item 13", "Item 14", "Item 15", "Item 16",
+            Ingredient[] ingredients = new Ingredient[]{bread,bread,bread,bread,bread};
+
+
+
+            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.bread), "pasta", ingredients );
+
+            Recipe[] recipes = new Recipe[]{
+                    pasta,pasta,pasta,pasta,pasta,pasta,pasta,
+
             };
 
-            final ArrayList<String> list = new ArrayList<String>();
-            for (int i = 0; i < values.length; ++i) {
-                list.add(values[i]);
+            final ArrayList<Recipe> list = new ArrayList<Recipe>();
+            for (int i = 0; i < recipes.length; ++i) {
+                list.add(recipes[i]);
             }
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), values);
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), recipes);
             listView.setAdapter(adapter);
+
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
@@ -294,17 +311,28 @@ public class CookApp extends AppCompatActivity {
             View view = inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
 
-            String[] values = new String[]{
-                    "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06", "Item 07", "Item 08", "Item 09", "Item 10", "Item 11"
+            Ingredient bread = new Ingredient(ContextCompat.getDrawable(getContext(), R.drawable.bread));
+
+            Ingredient[] ingredients = new Ingredient[]{bread,bread,bread,bread,bread};
+
+
+
+            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.pasta), "pasta", ingredients );
+
+
+            Recipe[] recipes = new Recipe[]{
+                    pasta,pasta,pasta,pasta,pasta,pasta,pasta,
+
             };
 
-            final ArrayList<String> list = new ArrayList<String>();
-            for (int i = 0; i < values.length; ++i) {
-                list.add(values[i]);
+            final ArrayList<Recipe> list = new ArrayList<Recipe>();
+            for (int i = 0; i < recipes.length; ++i) {
+                list.add(recipes[i]);
             }
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), values);
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), recipes);
             listView.setAdapter(adapter);
+
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {

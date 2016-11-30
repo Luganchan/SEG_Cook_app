@@ -11,33 +11,27 @@ import android.widget.TextView;
 /**
  * Created by shawnco on 11/22/16.
  */
-public class RecipeArrayAdapter extends ArrayAdapter<String> {
+public class RecipeArrayAdapter extends ArrayAdapter<Recipe> {
     private final Context context;
-    private final String[] values;
+    private final Recipe[] recipes;
 
-    public RecipeArrayAdapter(Context context, String[] values) {
-        super(context, R.layout.cook_app_items, values);
+    public RecipeArrayAdapter(Context context, Recipe[] recipes) {
+        super(context, R.layout.cook_app_items, recipes);
         this.context = context;
-        this.values = values;
+        this.recipes = recipes;
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.cook_app_items, parent, false);
-        TextView textView = (TextView) rowView.findViewById(R.id.line01);
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-        textView.setText(values[position]);
+        TextView textView = (TextView) rowView.findViewById(R.id.recipe_title);
+        ImageView imageView = (ImageView) rowView.findViewById(R.id.recipe_image);
+        textView.setText(recipes[position].setTitle);
+        imageView.setImageDrawable(recipes[0].drawable);
+
+
 // Change the icon for Windows and iPhone
-        /*
-        String s = values[position];
-        if (s == null || s.isEmpty() || s.equals("empty")) {
-            imageView.setImageResource(R.drawable.ic_logo_empty);
-        } else {
-            imageView.setImageResource(R.drawable.ic_logo_mil);
-        }
-        return rowView;
-    */
+
         return rowView;
     }
 }

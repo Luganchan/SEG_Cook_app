@@ -1,5 +1,6 @@
 package ca.uottawa.cookapp;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ButtonBarLayout;
@@ -20,6 +21,18 @@ import java.util.ArrayList;
 
 
 public class Recipe extends AppCompatActivity {
+
+    Drawable drawable;
+    TextView title, discription;
+    Ingredient[] ingredients;
+    String setTitle;
+
+
+    public Recipe (Drawable drawable, String setTitle, Ingredient[] ingredients){
+        this.drawable = drawable;
+        this.setTitle = setTitle;
+        this.ingredients = ingredients;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +90,6 @@ public class Recipe extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    TextView title, discription;
     public void setEditable(){
 
 
