@@ -27,7 +27,7 @@ public class RecipeArrayAdapter extends ArrayAdapter<Recipe> {
         TextView textView = (TextView) rowView.findViewById(R.id.recipe_title);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.recipe_image);
         textView.setText(recipes[position].setTitle);
-        imageView.setImageDrawable(recipes[0].drawable);
+        imageView.setImageDrawable(recipes[position].drawable);
 
 
 // Change the icon for Windows and iPhone

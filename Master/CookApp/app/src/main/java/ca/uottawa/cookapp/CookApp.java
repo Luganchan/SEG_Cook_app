@@ -231,10 +231,11 @@ public class CookApp extends AppCompatActivity {
 
 
 
-            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.bread), "pasta", ingredients );
+            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.pasta), "pasta", ingredients );
+            Recipe soupe = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.soupe), "Soupe", ingredients );
 
             Recipe[] recipes = new Recipe[]{
-                pasta,pasta,pasta,pasta,pasta,pasta,pasta,
+                pasta,soupe,pasta,pasta,pasta,pasta,pasta,
 
             };
 
@@ -249,7 +250,7 @@ public class CookApp extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                    final String item = (String) parent.getItemAtPosition(position);
+                    final Recipe item = (Recipe) parent.getItemAtPosition(position);
                     openRecipe();
                 }
             });
@@ -257,7 +258,7 @@ public class CookApp extends AppCompatActivity {
             return view;
         }
         public void openRecipe(){
-            Intent intent = new Intent(getContext(), Recipe.class);
+            Intent intent = new Intent(getContext(), RecipeActivity.class);
             startActivity(intent);
         }
     }
@@ -274,7 +275,7 @@ public class CookApp extends AppCompatActivity {
 
 
 
-            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.bread), "pasta", ingredients );
+            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.pasta), "pasta", ingredients );
 
             Recipe[] recipes = new Recipe[]{
                     pasta,pasta,pasta,pasta,pasta,pasta,pasta,
