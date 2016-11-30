@@ -23,15 +23,17 @@ import java.util.ArrayList;
 public class Recipe extends AppCompatActivity {
 
     Drawable drawable;
-    TextView title, discription;
+    TextView title, dscription;
     Ingredient[] ingredients;
     String setTitle;
+    Boolean isFavourite;
 
 
     public Recipe (Drawable drawable, String setTitle, Ingredient[] ingredients){
         this.drawable = drawable;
         this.setTitle = setTitle;
         this.ingredients = ingredients;
+        this.isFavourite=false;
     }
 
     public Drawable getRecipeDrawable(){
@@ -56,7 +58,12 @@ public class Recipe extends AppCompatActivity {
     public void setRecipeIngredients(Ingredient[] ingredients){
         this.ingredients = ingredients;
     }
-
+    public void setIsFavourite(Boolean favourite){
+        this.isFavourite=isChangingConfigurations();
+    }
+    public boolean getIsFavourite(){
+        return isFavourite;
+    }
 
 
    public void deleteRecipe(){}
