@@ -34,5 +34,30 @@ public class Recipe extends AppCompatActivity {
         this.ingredients = ingredients;
     }
 
+    public Drawable getRecipeDrawable(){
+        return drawable;
+    }
+
+    public String getRecipeTitle(){
+        return setTitle;
+    }
+
+    public Ingredient[] getIngredients(){
+        return ingredients;
+    }
+    public void setRecipeDrawable(Drawable drawable){
+        this.drawable = drawable;
+    }
+
+    public void setRecipeTitle(String setTitle){
+        this.setTitle = setTitle;
+    }
+
+    public void setRecipeIngredients(Ingredient[] ingredients){
+        this.ingredients = ingredients;
+    }
+
+
+
    public void deleteRecipe(){}
 }
