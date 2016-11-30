@@ -28,6 +28,8 @@ public class AddRecipeActivity extends AppCompatActivity {
         });
     }
     public void saveRecipe(){
+    Recipe newRecipe= new Recipe(null, findViewById(R.id.recipe_title).toString(), null);
+        newRecipe.setIsFavourite(false);
 
     }
 }
