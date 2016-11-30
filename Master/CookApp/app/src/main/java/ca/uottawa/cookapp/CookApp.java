@@ -244,7 +244,7 @@ public class CookApp extends AppCompatActivity {
                 list.add(recipes[i]);
             }
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), recipes);
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), list);
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -287,7 +287,7 @@ public class CookApp extends AppCompatActivity {
                 list.add(recipes[i]);
             }
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), recipes);
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), list);
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -331,7 +331,7 @@ public class CookApp extends AppCompatActivity {
                 list.add(recipes[i]);
             }
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), recipes);
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), list);
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
