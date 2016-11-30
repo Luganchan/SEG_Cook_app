@@ -28,14 +28,14 @@
                     android:id="@+id/imageView4" />
 
                 <TextView
-                    android:text="Title"
+                    android:text="Tap to set a name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/recipe_title"
                     android:textSize="30sp" />
 
                 <TextView
-                    android:text="Discription"
+                    android:text="Tap to add a procedure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/recipe_discription"
@@ -56,7 +56,7 @@
                         android:layout_gravity="bottom">
 
                         <android.support.design.widget.FloatingActionButton
-                            android:id="@+id/heart"
+                            android:id="@+id/save"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end|bottom"
@@ -100,7 +100,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="end|bottom"
                             android:layout_margin="@dimen/fab_margin"
-                            android:src="@android:drawable/star_off"
+                            android:src="@android:drawable/ic_dialog_dialer"
                             android:layout_marginRight="20dp"
                             android:layout_weight="0.09" />
                     </LinearLayout>

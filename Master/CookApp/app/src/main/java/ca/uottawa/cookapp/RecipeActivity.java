@@ -58,6 +58,13 @@ public class RecipeActivity extends AppCompatActivity {
                 setIsFavourite();
             }
         });
+        FloatingActionButton delete = (FloatingActionButton) findViewById(R.id.delete);
+        heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteRecipe();
+            }
+        });
     }
     public void setIsFavourite(){
         if (this.isFavourite==true){
@@ -106,5 +113,7 @@ public class RecipeActivity extends AppCompatActivity {
         title.setFocusableInTouchMode(true);
     }
 
-    public void deleteRecipe(){}
+    public void deleteRecipe(){
+
+    }
 }

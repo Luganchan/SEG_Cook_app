@@ -1,6 +1,7 @@
 package ca.uottawa.cookapp;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -18,5 +19,15 @@ public class AddRecipeActivity extends AppCompatActivity {
         setContentView(R.layout.add_recipe_layout);
         setTitle("Add Recipe");
         setVisible(true);
+        FloatingActionButton save = (FloatingActionButton) findViewById(R.id.save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveRecipe();
+            }
+        });
+    }
+    public void saveRecipe(){
+
     }
 }
