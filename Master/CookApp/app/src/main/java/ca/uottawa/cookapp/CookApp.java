@@ -107,6 +107,8 @@ public class CookApp extends AppCompatActivity {
             case R.id.action_settings:
                 openSettingsActivity();
                 break;
+            case R.id.help_page_button:
+                openHelpPage();
         }
 
         return super.onOptionsItemSelected(item);
@@ -122,6 +124,11 @@ public class CookApp extends AppCompatActivity {
         Intent intent = new Intent(this, FilterActivity.class);
         startActivity(intent);
 
+    }
+
+    public void openHelpPage(){
+        Intent intent = new Intent(this, HelpActivity.class);
+        startActivity(intent);
     }
 
     /**
