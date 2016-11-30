@@ -284,7 +284,10 @@ public class CookApp extends AppCompatActivity {
 
             final ArrayList<Recipe> list = new ArrayList<Recipe>();
             for (int i = 0; i < recipes.length; ++i) {
-                list.add(recipes[i]);
+                if (recipes[i].getIsFavourite()==true){
+                    list.add(recipes[i]);
+                }
+
             }
 
             RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), list);
