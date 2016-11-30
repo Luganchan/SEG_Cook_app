@@ -38,7 +38,7 @@
                     android:text="Tap to add a procedure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recipe_discription"
+                    android:id="@+id/recipe_description"
                     android:textSize="20sp" />
 
                 <LinearLayout
