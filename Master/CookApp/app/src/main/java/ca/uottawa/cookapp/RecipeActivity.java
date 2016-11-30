@@ -30,16 +30,16 @@ public class RecipeActivity extends AppCompatActivity {
 // Get ListView object from xml layout
         ListView listView = (ListView) findViewById(R.id.ingredient_list);
 //Defining Array values to show in ListView
-
-
-
+        String[] values = new String[]{
+                "Item 01", "Item 02", "Item 03", "Item 04", "Item 05", "Item 06", "Item 07", "Item 08","Item 09", "Item 10", "Item 11", "Item 12","Item 13", "Item 14", "Item 15", "Item 16",
+        };
 //Converting Array to ArrayList
-        final ArrayList<Ingredient> list = new ArrayList<Ingredient>();
-        for (int i = 0; i < ingredients.length; ++i) {
-            list.add(ingredients[i]);
+        final ArrayList<String> list = new ArrayList<String>();
+        for (int i = 0; i < values.length; ++i) {
+            list.add(values[i]);
         }
 //Create an ArrayAdapter and Set it on the ListView
-        IngridientArrayAdapter adapter = new IngridientArrayAdapter(this, ingredients);
+        IngridientArrayAdapter adapter = new IngridientArrayAdapter(this, values);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

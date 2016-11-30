@@ -15,12 +15,12 @@ import android.widget.TextView;
 public class IngridientArrayAdapter extends ArrayAdapter {
 
     private final Context context;
-    private final Ingredient[] ingredients;
+    private final String[] values;
 
-    public IngridientArrayAdapter(Context context, Ingredient[] ingredients) {
-        super(context,R.layout.ingredient_layout, ingredients);
+    public IngridientArrayAdapter(Context context, String[] values) {
+        super(context,R.layout.ingredient_layout, values);
         this.context = context;
-        this.ingredients = ingredients;
+        this.values = values;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -28,8 +28,7 @@ public class IngridientArrayAdapter extends ArrayAdapter {
 
         View rowView = inflater.inflate(R.layout.ingredient_layout, parent, false);
         TextView textView = (TextView) rowView.findViewById(R.id.ingredient_title);
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.ingredient_image);
-       // textView.setText(ingredients[position]);
+        textView.setText(values[0]);
 
         return rowView;
 
