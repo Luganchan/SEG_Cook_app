@@ -2,6 +2,7 @@ package ca.uottawa.cookapp;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,7 @@ public class RecipeActivity extends AppCompatActivity {
     TextView title, discription;
     Ingredient[] ingredients;
     String setTitle;
+    Boolean isFavourite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,27 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton heart = (FloatingActionButton) findViewById(R.id.heart);
+        heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setIsFavourite();
+            }
+        });
+        FloatingActionButton delete = (FloatingActionButton) findViewById(R.id.delete);
+        heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteRecipe();
+            }
+        });
+    }
+    public void setIsFavourite(){
+        if (this.isFavourite==true){
+            this.isFavourite=false;
+        }else if (this.isFavourite==false){
+            this.isFavourite=false;
+        }
 
     }
 
@@ -90,5 +113,7 @@ public class RecipeActivity extends AppCompatActivity {
         title.setFocusableInTouchMode(true);
     }
 
-    public void deleteRecipe(){}
+    public void deleteRecipe(){
+
+    }
 }

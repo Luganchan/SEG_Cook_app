@@ -42,7 +42,8 @@
                         android:layout_margin="@dimen/fab_margin"
                         android:src="@android:drawable/star_big_off"
                         app:backgroundTint="?attr/actionMenuTextColor"
-                        android:forceHasOverlappingRendering="false" />
+                        android:forceHasOverlappingRendering="false"
+                        android:onClick="setFavourite" />
 
                     <android.support.design.widget.FloatingActionButton
                         android:id="@+id/share"

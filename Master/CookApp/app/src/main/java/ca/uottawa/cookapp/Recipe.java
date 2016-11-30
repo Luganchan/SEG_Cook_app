@@ -59,7 +59,7 @@ public class Recipe extends AppCompatActivity {
         this.ingredients = ingredients;
     }
     public void setIsFavourite(Boolean favourite){
-        this.isFavourite=isChangingConfigurations();
+        this.isFavourite=favourite;
     }
     public boolean getIsFavourite(){
         return isFavourite;
