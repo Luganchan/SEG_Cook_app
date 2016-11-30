@@ -250,17 +250,19 @@ public class CookApp extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                    final Recipe item = (Recipe) parent.getItemAtPosition(position);
-                    openRecipe();
+                    Intent intent = new Intent (getContext(),RecipeActivity.class);
+                    startActivityForResult(intent,0);
+//                    final Recipe item = (Recipe) parent.getItemAtPosition(position);
+//                    openRecipe();
                 }
             });
 
             return view;
         }
-        public void openRecipe(){
-            Intent intent = new Intent(getContext(), RecipeActivity.class);
-            startActivity(intent);
-        }
+//        public void openRecipe(){
+//            Intent intent = new Intent(getContext(), RecipeActivity.class);
+//            startActivity(intent);
+//        }
     }
 
 
