@@ -44,6 +44,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    public static ArrayList<Recipe> tempSearchHolder = new ArrayList<>();
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -59,7 +60,12 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         String[] ingredients=new String[] {"bread"};
         //RecipeManager recipeManager = new RecipeManager();
         Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "pasta", ingredients );
+        Recipe pastb = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "pastB", ingredients );
+        Recipe pastb2 = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "pastb", ingredients );
         RecipeManager.recipeList.add(pasta);
+        RecipeManager.recipeList.add(pastb);
+        RecipeManager.recipeList.add(pastb2);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -102,14 +108,27 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
     }
 
     @Override
-    public boolean onQueryTextSubmit(String query) {
+    public boolean onQueryTextSubmit(String newText) {
         // User pressed the search button
+        // User changed the text
+        if(newText != null && !newText.isEmpty()){
+            ArrayList<Recipe> lstFound = new ArrayList<>();
+            for(int i = 0; i<RecipeManager.getList().size();i++){
+                if(RecipeManager.getList().get(i).getRecipeTitle().toLowerCase().contains(newText.toLowerCase()))
+                    lstFound.add(RecipeManager.getList().get(i));
+            }
+            tempSearchHolder =lstFound;
+        }
+        else{
+            tempSearchHolder = new ArrayList<>();
+        }
+
+        openSearchResults();
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        // User changed the text
 
         return false;
     }
@@ -150,6 +169,11 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
     public void openHelpPage(){
         Intent intent = new Intent(this, HelpActivity.class);
+        startActivity(intent);
+    }
+
+    public void openSearchResults(){
+        Intent intent = new Intent(this, SearchResults.class);
         startActivity(intent);
     }
 
@@ -239,6 +263,8 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
      */
 
     public static class RecipesListFragment extends Fragment{
+
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
@@ -266,17 +292,13 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Intent intent = new Intent (getContext(),RecipeActivity.class);
                     startActivityForResult(intent,0);
-//                    final Recipe item = (Recipe) parent.getItemAtPosition(position);
-//                    openRecipe();
+
                 }
             });
 
             return view;
         }
-//        public void openRecipe(){
-//            Intent intent = new Intent(getContext(), RecipeActivity.class);
-//            startActivity(intent);
-//        }
+
     }
 
 
