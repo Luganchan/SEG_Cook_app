@@ -20,12 +20,6 @@
                 app:srcCompat="@mipmap/ic_launcher"
                 android:id="@+id/recipe_image" />
 
-            <Button
-                android:text="Delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/delete_button" />
-
             <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="224dp"
