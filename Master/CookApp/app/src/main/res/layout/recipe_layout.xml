@@ -25,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:layout_gravity="right|bottom">
+                android:layout_gravity="right|bottom"
+                android:clickable="false">
 
                 <LinearLayout
                     android:orientation="vertical"
@@ -43,7 +44,8 @@
                         android:src="@android:drawable/star_big_off"
                         app:backgroundTint="?attr/actionMenuTextColor"
                         android:forceHasOverlappingRendering="false"
-                        android:onClick="setFavourite" />
+                        android:onClick="setFavourite"
+                        android:clickable="true" />
 
                     <android.support.design.widget.FloatingActionButton
                         android:id="@+id/share"
@@ -53,7 +55,8 @@
                         android:layout_margin="@dimen/fab_margin"
                         android:src="@android:drawable/ic_menu_share"
                         android:layout_weight="1"
-                        app:backgroundTint="@android:color/holo_blue_dark" />
+                        app:backgroundTint="@android:color/holo_blue_dark"
+                        android:clickable="true" />
 
                 </LinearLayout>
 
@@ -73,7 +76,8 @@
                         android:src="@android:drawable/ic_delete"
                         android:layout_marginRight="20dp"
                         android:layout_weight="0.09"
-                        app:backgroundTint="@android:color/holo_blue_dark" />
+                        app:backgroundTint="@android:color/holo_blue_dark"
+                        android:clickable="true" />
 
                     <android.support.design.widget.FloatingActionButton
                         android:id="@+id/options"
@@ -83,7 +87,8 @@
                         android:layout_margin="@dimen/fab_margin"
                         android:src="@android:drawable/ic_dialog_dialer"
                         android:layout_marginRight="20dp"
-                        android:layout_weight="0.09" />
+                        android:layout_weight="0.09"
+                        android:clickable="true" />
 
                 </LinearLayout>
 

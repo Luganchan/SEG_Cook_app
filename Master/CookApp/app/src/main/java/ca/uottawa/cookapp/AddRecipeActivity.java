@@ -23,13 +23,15 @@ public class AddRecipeActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveRecipe();
+                //saveRecipe();
             }
         });
     }
+    /*
     public void saveRecipe(){
     Recipe newRecipe= new Recipe(null, findViewById(R.id.recipe_title).toString(), null);
         newRecipe.setIsFavourite(false);
 
     }
+    */
 }

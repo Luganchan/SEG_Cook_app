@@ -24,47 +24,58 @@ public class Recipe extends AppCompatActivity {
 
     Drawable drawable;
     TextView title, dscription;
-    Ingredient[] ingredients;
+    String[] ingredients;
     String setTitle;
     Boolean isFavourite;
+    int id;
 
 
-    public Recipe (Drawable drawable, String setTitle, Ingredient[] ingredients){
+    public Recipe(int id, Drawable drawable, String setTitle, String[] ingredients) {
         this.drawable = drawable;
         this.setTitle = setTitle;
         this.ingredients = ingredients;
-        this.isFavourite=false;
+        this.isFavourite = false;
+        this.id = id;
     }
 
-    public Drawable getRecipeDrawable(){
+    public Drawable getRecipeDrawable() {
         return drawable;
     }
 
-    public String getRecipeTitle(){
+    public String getRecipeTitle() {
         return setTitle;
     }
 
-    public Ingredient[] getIngredients(){
+    public String[] getIngredients() {
         return ingredients;
     }
-    public void setRecipeDrawable(Drawable drawable){
+
+    public void setRecipeDrawable(Drawable drawable) {
         this.drawable = drawable;
     }
 
-    public void setRecipeTitle(String setTitle){
+    public void setRecipeTitle(String setTitle) {
         this.setTitle = setTitle;
     }
 
-    public void setRecipeIngredients(Ingredient[] ingredients){
+    public void setRecipeIngredients(String[] ingredients) {
         this.ingredients = ingredients;
     }
-    public void setIsFavourite(Boolean favourite){
-        this.isFavourite=favourite;
+
+    public void setIsFavourite(Boolean favourite) {
+        this.isFavourite = favourite;
     }
-    public boolean getIsFavourite(){
+
+    public boolean getIsFavourite() {
         return isFavourite;
     }
 
+    public int getId() {
+        return id;
+    }
 
-   public void deleteRecipe(){}
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

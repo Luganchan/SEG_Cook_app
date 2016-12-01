@@ -186,8 +186,6 @@ public class CookApp extends AppCompatActivity {
                     return new RecipesListFragment();
                 case 1:
                     return new FavoritesListFragment();
-                case 2:
-                    return new GroceryListFragment();
                 default:
                     return PlaceholderFragment.newInstance(position + 1);
 
@@ -225,26 +223,21 @@ public class CookApp extends AppCompatActivity {
             View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
 
-            Ingredient bread = new Ingredient(ContextCompat.getDrawable(getContext(), R.drawable.bread));
 
-            Ingredient[] ingredients = new Ingredient[]{bread,bread,bread,bread,bread};
-
+            String[] ingredients = new String[]{"bread"};
 
 
-            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.pasta), "pasta", ingredients );
-            Recipe soupe = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.soupe), "Soupe", ingredients );
+
+            Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getContext(), R.drawable.pasta), "pasta", ingredients );
+            Recipe soupe = new Recipe(1,ContextCompat.getDrawable(getContext(), R.drawable.soupe), "Soupe", ingredients );
 
             Recipe[] recipes = new Recipe[]{
                 pasta,soupe,pasta,pasta,pasta,pasta,pasta,
 
             };
 
-            final ArrayList<Recipe> list = new ArrayList<Recipe>();
-            for (int i = 0; i < recipes.length; ++i) {
-                list.add(recipes[i]);
-            }
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), list);
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), RecipeManager.getList());
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -271,28 +264,9 @@ public class CookApp extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
-            Ingredient bread = new Ingredient(ContextCompat.getDrawable(getContext(), R.drawable.bread));
-
-            Ingredient[] ingredients = new Ingredient[]{bread,bread,bread,bread,bread};
 
 
-
-            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.pasta), "pasta", ingredients );
-
-            Recipe[] recipes = new Recipe[]{
-                    pasta,pasta,pasta,pasta,pasta,pasta,pasta,
-
-            };
-
-            final ArrayList<Recipe> list = new ArrayList<Recipe>();
-            for (int i = 0; i < recipes.length; ++i) {
-                if (recipes[i].getIsFavourite()==true){
-                    list.add(recipes[i]);
-                }
-
-            }
-
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), list);
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(),RecipeManager.getList());
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -309,51 +283,7 @@ public class CookApp extends AppCompatActivity {
             Intent intent = new Intent(getContext(), Recipe.class);
             startActivity(intent);
         }
-    }
 
-    public static class GroceryListFragment extends Fragment {
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.cook_app_fragments, container, false);
-            ListView listView = (ListView) view.findViewById(R.id.list);
-
-            Ingredient bread = new Ingredient(ContextCompat.getDrawable(getContext(), R.drawable.bread));
-
-            Ingredient[] ingredients = new Ingredient[]{bread,bread,bread,bread,bread};
-
-
-
-            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.pasta), "pasta", ingredients );
-
-
-            Recipe[] recipes = new Recipe[]{
-                    pasta,pasta,pasta,pasta,pasta,pasta,pasta,
-
-            };
-
-            final ArrayList<Recipe> list = new ArrayList<Recipe>();
-            for (int i = 0; i < recipes.length; ++i) {
-                list.add(recipes[i]);
-            }
-
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), list);
-            listView.setAdapter(adapter);
-
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                    final String item = (String) parent.getItemAtPosition(position);
-                    openRecipe();
-                }
-            });
-
-            return view;
-        }
-
-        public void openRecipe() {
-            Intent intent = new Intent(getContext(), Recipe.class);
-            startActivity(intent);
-        }
     }
 }
 
