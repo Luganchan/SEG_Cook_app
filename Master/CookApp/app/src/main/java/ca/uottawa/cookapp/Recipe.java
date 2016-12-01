@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  */
 
 
-public class Recipe extends AppCompatActivity {
+public class Recipe extends AppCompatActivity implements Serializable {
 
     Drawable drawable;
     TextView title, dscription;

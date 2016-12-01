@@ -2,6 +2,7 @@ package ca.uottawa.cookapp;
 
 import android.content.Intent;
 import android.os.Build;
+import android.os.Parcelable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -25,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import static java.security.AccessController.getContext;
@@ -298,62 +300,64 @@ public class CookApp extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                    final String item = (String) parent.getItemAtPosition(position);
-                    openRecipe();
+                    Recipe item = (Recipe) parent.getItemAtPosition(position);
+                    openRecipe(item);
                 }
             });
 
             return view;
         }
-        public void openRecipe(){
+        public void openRecipe(Recipe item){
             Intent intent = new Intent(getContext(), Recipe.class);
+            intent.putExtra("Recipe", item);
             startActivity(intent);
         }
     }
 
-    public static class GroceryListFragment extends Fragment {
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.cook_app_fragments, container, false);
-            ListView listView = (ListView) view.findViewById(R.id.list);
-
-            Ingredient bread = new Ingredient(ContextCompat.getDrawable(getContext(), R.drawable.bread));
-
-            Ingredient[] ingredients = new Ingredient[]{bread,bread,bread,bread,bread};
 
 
+}
+class GroceryListFragment extends Fragment {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.cook_app_fragments, container, false);
+        ListView listView = (ListView) view.findViewById(R.id.list);
 
-            Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.pasta), "pasta", ingredients );
+        Ingredient bread = new Ingredient(ContextCompat.getDrawable(getContext(), R.drawable.bread));
+
+        Ingredient[] ingredients = new Ingredient[]{bread, bread, bread, bread, bread};
 
 
-            Recipe[] recipes = new Recipe[]{
-                    pasta,pasta,pasta,pasta,pasta,pasta,pasta,
+        Recipe pasta = new Recipe(ContextCompat.getDrawable(getContext(), R.drawable.pasta), "pasta", ingredients);
 
-            };
 
-            final ArrayList<Recipe> list = new ArrayList<Recipe>();
-            for (int i = 0; i < recipes.length; ++i) {
-                list.add(recipes[i]);
+        Recipe[] recipes = new Recipe[]{
+                pasta, pasta, pasta, pasta, pasta, pasta, pasta,
+
+        };
+
+        final ArrayList<Recipe> list = new ArrayList<Recipe>();
+        for (int i = 0; i < recipes.length; ++i) {
+            list.add(recipes[i]);
+        }
+
+        RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), list);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                final String item = (String) parent.getItemAtPosition(position);
+                openRecipe();
             }
+        });
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), list);
-            listView.setAdapter(adapter);
+        return view;
+    }
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                    final String item = (String) parent.getItemAtPosition(position);
-                    openRecipe();
-                }
-            });
-
-            return view;
-        }
-
-        public void openRecipe() {
-            Intent intent = new Intent(getContext(), Recipe.class);
-            startActivity(intent);
-        }
+    public void openRecipe() {
+        Intent intent = new Intent(getContext(), Recipe.class);
+        startActivity(intent);
     }
 }
 
