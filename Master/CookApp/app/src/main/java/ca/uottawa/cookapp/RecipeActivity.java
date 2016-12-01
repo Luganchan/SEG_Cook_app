@@ -20,8 +20,7 @@ import java.util.ArrayList;
 public class RecipeActivity extends AppCompatActivity {
 
     Drawable drawable;
-    TextView title, discription;
-    Ingredient[] ingredients;
+    TextView title, description;
     String setTitle;
     Boolean isFavourite;
     Recipe recipe;
@@ -30,7 +29,7 @@ public class RecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_layout);
-        setTitle("Recipe");
+        //setTitle(RecipeManager.recipeList);
 // Get ListView object from xml layout
         ListView listView = (ListView) findViewById(R.id.ingredient_list);
 //Defining Array values to show in ListView
@@ -53,8 +52,6 @@ public class RecipeActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.recipe_image);
         imageView.setImageDrawable( recipe.drawable);
 //Create an ArrayAdapter and Set it on the ListView
-        IngridientArrayAdapter adapter = new IngridientArrayAdapter(this, values);
-        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {

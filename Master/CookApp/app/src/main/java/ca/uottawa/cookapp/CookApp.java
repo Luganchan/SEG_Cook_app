@@ -57,9 +57,9 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cook_app);
         String[] ingredients=new String[] {"bread"};
-        RecipeManager recipeManager = new RecipeManager();
+        //RecipeManager recipeManager = new RecipeManager();
         Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "pasta", ingredients );
-        recipeManager.getList().add(pasta);
+        RecipeManager.recipeList.add(pasta);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
