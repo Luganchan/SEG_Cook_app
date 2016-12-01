@@ -332,8 +332,9 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                    Recipe item = (Recipe) parent.getItemAtPosition(position);
-                    openRecipe(item);
+                    Intent intent = new Intent (getContext(),RecipeActivity.class);
+                    intent.putExtra("recipeIndex",position);
+                    startActivityForResult(intent,0);
                 }
             });
 
