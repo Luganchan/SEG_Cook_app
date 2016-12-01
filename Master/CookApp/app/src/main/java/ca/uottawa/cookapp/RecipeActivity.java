@@ -29,6 +29,18 @@ public class RecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_layout);
+
+
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabDelete);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteRecipe(recipe);
+            }
+        });
+
+
         //setTitle(RecipeManager.recipeList);
 // Get ListView object from xml layout
         ListView listView = (ListView) findViewById(R.id.ingredient_list);
@@ -68,6 +80,11 @@ public class RecipeActivity extends AppCompatActivity {
             this.isFavourite=false;
         }
 
+    }
+
+    public void deleteRecipe(Recipe recipe){
+
+        RecipeManager.recipeList.remove(recipe);
     }
 
     @Override
