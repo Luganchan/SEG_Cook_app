@@ -41,22 +41,14 @@ public class RecipeActivity extends AppCompatActivity {
         for (int i = 0; i < values.length; ++i) {
             list.add(values[i]);
         }
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String value = extras.getString("Recipe");
-            //The key argument here must match that used in the other activity
-            recipe = (Recipe) savedInstanceState.getSerializable(value);
 
-        }
 
         ImageView imageView = (ImageView) findViewById(R.id.recipe_image);
-        imageView.setImageDrawable( recipe.drawable);
+        //imageView.setImageDrawable(recipe.drawable);
 //Create an ArrayAdapter and Set it on the ListView
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position);
-//Do something with the string that you just got!
             }
         });
 
