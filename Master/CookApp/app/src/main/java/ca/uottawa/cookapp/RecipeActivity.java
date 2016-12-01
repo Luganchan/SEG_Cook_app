@@ -25,6 +25,7 @@ public class RecipeActivity extends AppCompatActivity {
     String setTitle;
     Boolean isFavourite;
     Recipe recipe;
+    int data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class RecipeActivity extends AppCompatActivity {
         setContentView(R.layout.recipe_layout);
 
 
-        final int data = getIntent().getExtras().getInt("recipeindex");
+        int data = getIntent().getExtras().getInt("recipeindex");
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabDelete);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +72,10 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void onClickdelete(View view){
+        deleteRecipe(data);
+        finish();
     }
 
     public void setIsFavourite(){

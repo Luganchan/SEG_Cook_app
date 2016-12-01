@@ -22,7 +22,6 @@
                 <ImageView
                     android:layout_width="244dp"
                     android:layout_height="197dp"
-                    app:srcCompat="@mipmap/ic_launcher"
                     android:id="@+id/recipe_image"
                     android:layout_marginLeft="60dp"
                     android:clickable="false" />
@@ -34,7 +33,7 @@
                     android:id="@+id/recipe_title" />
 
                 <TextView
-                    android:text="Discrition"
+                    android:text="Description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/recipe_discription" />

@@ -34,11 +34,13 @@
                 android:textSize="30sp"
                 android:layout_gravity="center" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="253dp"
-                app:srcCompat="@mipmap/ic_launcher"
-                android:id="@+id/imageView4" />
+            <Button
+                android:layout_width="131dp"
+                android:layout_height="79dp"
+                android:text="Delete"
+                android:id="@+id/deltettemp"
+                android:layout_gravity="right|bottom"
+                android:onClick="onClickdelete" />
         </FrameLayout>
 
     </RelativeLayout>
