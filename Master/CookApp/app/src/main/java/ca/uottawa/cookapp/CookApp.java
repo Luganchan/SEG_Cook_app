@@ -8,7 +8,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 
 import static java.security.AccessController.getContext;
 
-public class CookApp extends AppCompatActivity {
+public class CookApp extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -92,7 +94,24 @@ public class CookApp extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_recipe_list, menu);
 
+        MenuItem searchItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(this);
+
         return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        // User pressed the search button
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        // User changed the text
+
+        return false;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
