@@ -12,4 +12,8 @@ public class RecipeManager {
     public static ArrayList <Recipe> getList(){
         return recipeList;
     }
+
+    public Recipe getRecipe(int id){
+        return recipeList.get(id);
+    }
 }

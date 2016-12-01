@@ -59,8 +59,27 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         ArrayList <String> ingredients= new ArrayList <String>();
         ingredients.add("Pasta");
         //RecipeManager recipeManager = new RecipeManager();
-        Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "pasta", ingredients );
+        Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", ingredients );
+
+        Recipe soup = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.soupe), "Soup", ingredients );
+        Recipe bread = new Recipe(2,ContextCompat.getDrawable(getApplicationContext(), R.drawable.bread), "Bread", ingredients );
+        Recipe pizza = new Recipe(3,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pepperoni_pizza), "Pizza", ingredients );
+        Recipe perogies = new Recipe(4,ContextCompat.getDrawable(getApplicationContext(), R.drawable.perogies), "Perogies", ingredients );
+        Recipe salad = new Recipe(5,ContextCompat.getDrawable(getApplicationContext(), R.drawable.garden), "Salad", ingredients );
+
+
         RecipeManager.recipeList.add(pasta);
+        RecipeManager.recipeList.add(soup);
+
+        RecipeManager.recipeList.add(bread);
+
+        RecipeManager.recipeList.add(pizza);
+
+        RecipeManager.recipeList.add(perogies);
+
+        RecipeManager.recipeList.add(salad);
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -250,6 +269,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Intent intent = new Intent (getContext(),RecipeActivity.class);
                     startActivityForResult(intent,0);
+
 //                    final Recipe item = (Recipe) parent.getItemAtPosition(position);
 //                    openRecipe();
                 }
