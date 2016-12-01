@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class RecipeActivity extends AppCompatActivity {
     Ingredient[] ingredients;
     String setTitle;
     Boolean isFavourite;
+    Recipe recipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,16 @@ public class RecipeActivity extends AppCompatActivity {
         for (int i = 0; i < values.length; ++i) {
             list.add(values[i]);
         }
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("Recipe");
+            //The key argument here must match that used in the other activity
+            recipe = (Recipe) savedInstanceState.getSerializable(value);
+
+        }
+
+        ImageView imageView = (ImageView) findViewById(R.id.recipe_image);
+        imageView.setImageDrawable( recipe.drawable);
 //Create an ArrayAdapter and Set it on the ListView
         IngridientArrayAdapter adapter = new IngridientArrayAdapter(this, values);
         listView.setAdapter(adapter);
