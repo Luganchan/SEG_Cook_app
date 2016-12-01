@@ -56,7 +56,8 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cook_app);
-        String[] ingredients=new String[] {"bread"};
+        ArrayList <String> ingredients= new ArrayList <String>();
+        ingredients.add("Pasta");
         //RecipeManager recipeManager = new RecipeManager();
         Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "pasta", ingredients );
         RecipeManager.recipeList.add(pasta);
@@ -217,7 +218,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
@@ -227,8 +228,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                     return "Recipes";
                 case 1:
                     return "Favorites";
-                case 2:
-                    return "Grocery List";
             }
             return null;
         }
@@ -243,22 +242,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
-
-
-            String[] ingredients = new String[]{"bread"};
-
-
-
-            Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getContext(), R.drawable.pasta), "pasta", ingredients );
-            Recipe soupe = new Recipe(1,ContextCompat.getDrawable(getContext(), R.drawable.soupe), "Soupe", ingredients );
-
-            Recipe[] recipes = new Recipe[]{
-                pasta,soupe,pasta,pasta,pasta,pasta,pasta,
-
-            };
-
-
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), RecipeManager.getList());
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), RecipeManager.recipeList);
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -287,7 +271,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
             ListView listView = (ListView) view.findViewById(R.id.list);
 
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(),RecipeManager.getList());
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(),RecipeManager.recipeList);
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -306,6 +290,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
             startActivity(intent);
         }
     }
+
 }
 
 

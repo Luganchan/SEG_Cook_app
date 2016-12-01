@@ -1,5 +1,6 @@
 package ca.uottawa.cookapp;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -28,6 +29,7 @@ public class RecipeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.recipe_layout);
         //setTitle(RecipeManager.recipeList);
 // Get ListView object from xml layout
@@ -60,6 +62,14 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Intent intent = getIntent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+        startActivity(intent);
     }
     public void setIsFavourite(){
         if (this.isFavourite==true){
@@ -111,4 +121,5 @@ public class RecipeActivity extends AppCompatActivity {
     public void deleteRecipe(){
 
     }
+
 }

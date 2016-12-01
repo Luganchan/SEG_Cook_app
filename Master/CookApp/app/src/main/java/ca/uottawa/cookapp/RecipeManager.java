@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class RecipeManager {
     static ArrayList <Recipe> recipeList = new ArrayList<>();
     public RecipeManager(){
-        this.recipeList=recipeList;
     }
     public static ArrayList <Recipe> getList(){
         return recipeList;

@@ -27,19 +27,41 @@
                     app:srcCompat="@mipmap/ic_launcher"
                     android:id="@+id/imageView4" />
 
-                <TextView
-                    android:text="Tap to set a name"
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recipe_title"
-                    android:textSize="30sp" />
+                    android:id="@+id/editName"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Tap to change recipe name" />
 
-                <TextView
-                    android:text="Tap to add a procedure"
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recipe_description"
-                    android:textSize="20sp" />
+                    android:id="@+id/editDescription"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Tap to change description" />
+
+                <EditText
+                    android:layout_width="179dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addIngredienttext"
+                    android:text="tap to add ingredient" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Ingredient"
+                    android:id="@+id/button2"
+                    android:clickable="true"
+                    android:onClick="addIngredient" />
+
+                <Button
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:text="Save"
+                    android:id="@+id/button3"
+                    android:layout_gravity="right"
+                    android:onClick="save" />
 
             </LinearLayout>
 
