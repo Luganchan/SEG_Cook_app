@@ -44,6 +44,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    public static ArrayList<Recipe> tempSearchHolder = new ArrayList<>();
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -92,6 +93,8 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
 
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,8 +126,21 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
     }
 
     @Override
-    public boolean onQueryTextSubmit(String query) {
-        // User pressed the search button
+    public boolean onQueryTextSubmit(String newText) {
+        // User pressed the search button		        // User pressed the search button
+        // User changed the text
+        if(newText != null && !newText.isEmpty()){
+            ArrayList<Recipe> lstFound = new ArrayList<>();
+            for(int i = 0; i<RecipeManager.getList().size();i++){
+                if(RecipeManager.getList().get(i).getRecipeTitle().toLowerCase().contains(newText.toLowerCase()))
+                    lstFound.add(RecipeManager.getList().get(i));
+            }
+            tempSearchHolder =lstFound;
+        }
+        else{
+            tempSearchHolder = new ArrayList<>();
+        }
+        openSearchResults();
         return false;
     }
 
@@ -171,6 +187,10 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
     public void openHelpPage(){
         Intent intent = new Intent(this, HelpActivity.class);
+        startActivity(intent);
+    }
+    public void openSearchResults(){
+        Intent intent = new Intent(this, SearchResults.class);
         startActivity(intent);
     }
 
@@ -279,7 +299,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Intent intent = new Intent (getContext(),RecipeActivity.class);
-                    intent.putExtra("recipeindex",position);
+                    intent.putExtra("recipeIndex",position);
                     startActivityForResult(intent,0);
 
 //                    final Recipe item = (Recipe) parent.getItemAtPosition(position);

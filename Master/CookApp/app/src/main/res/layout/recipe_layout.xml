@@ -13,6 +13,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="253dp"
+                app:srcCompat="@mipmap/ic_launcher"
+                android:id="@+id/recipe_image" />
+
             <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="224dp"
@@ -26,14 +33,6 @@
                 android:id="@+id/recipe_title"
                 android:textSize="30sp"
                 android:layout_gravity="center" />
-
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                app:fabSize="mini"
-                app:srcCompat="?android:attr/actionModeCutDrawable"
-                android:id="@+id/fabDelete" />
 
             <ImageView
                 android:layout_width="match_parent"

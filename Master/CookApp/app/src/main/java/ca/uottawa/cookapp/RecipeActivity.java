@@ -34,7 +34,7 @@ public class RecipeActivity extends AppCompatActivity {
 
 
         final int data = getIntent().getExtras().getInt("recipeindex");
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabDelete);
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabDelete);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +42,7 @@ public class RecipeActivity extends AppCompatActivity {
 
             }
         });
+        */
 
 
         //setTitle(RecipeManager.recipeList);
@@ -56,10 +57,13 @@ public class RecipeActivity extends AppCompatActivity {
         for (int i = 0; i < values.length; ++i) {
             list.add(values[i]);
         }
-
+        int position =getIntent().getExtras().getInt("recipeIndex");
+        recipe = RecipeManager.getList().get(position);
 
         ImageView imageView = (ImageView) findViewById(R.id.recipe_image);
-        //imageView.setImageDrawable(recipe.drawable);
+        imageView.setImageDrawable(recipe.getRecipeDrawable());
+        TextView textView = (TextView) findViewById(R.id.recipe_title);
+        textView.setText(recipe.getRecipeTitle());
     //Create an ArrayAdapter and Set it on the ListView
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
