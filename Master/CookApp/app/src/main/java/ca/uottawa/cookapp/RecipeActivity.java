@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,16 +34,16 @@ public class RecipeActivity extends AppCompatActivity {
         setContentView(R.layout.recipe_layout);
 
 
-        final int data = getIntent().getExtras().getInt("recipeindex");
-       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabDelete);
-        fab.setOnClickListener(new View.OnClickListener() {
+        final int data = getIntent().getExtras().getInt("recipeIndex");
+       Button deleteButton = (Button) findViewById(R.id.delete_button);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 deleteRecipe(data);
 
             }
         });
-        */
+
 
 
         //setTitle(RecipeManager.recipeList);
@@ -129,7 +130,7 @@ public class RecipeActivity extends AppCompatActivity {
 
         RecipeManager.getList().remove(data);
 
-        new CookApp.RecipesListFragment();
+        //new CookApp.RecipesListFragment();
         
     }
 

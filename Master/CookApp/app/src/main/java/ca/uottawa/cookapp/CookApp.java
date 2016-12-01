@@ -302,8 +302,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                     intent.putExtra("recipeIndex",position);
                     startActivityForResult(intent,0);
 
-//                    final Recipe item = (Recipe) parent.getItemAtPosition(position);
-//                    openRecipe();
                 }
             });
 
@@ -312,10 +310,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         }
 
 
-        public void openRecipe(){
-            Intent intent = new Intent(getContext(), RecipeActivity.class);
-            startActivity(intent);
-       }
     }
 
 
@@ -340,11 +334,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
             return view;
         }
-        public void openRecipe(Recipe item){
-            Intent intent = new Intent(getContext(), Recipe.class);
-            intent.putExtra("Recipe", item);
-            startActivity(intent);
-        }
+
     }
 
     @Override

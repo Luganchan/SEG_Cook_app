@@ -39,9 +39,5 @@ public class SearchResults extends AppCompatActivity implements Serializable {
         });
     }
 
-    public void openRecipe(Recipe item){
-        Intent intent = new Intent(getApplicationContext(), RecipeActivity.class);
-        intent.putExtra("recipeIndex", item);
-        startActivity(intent);
-    }
+
 }
