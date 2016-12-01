@@ -31,12 +31,13 @@ public class RecipeActivity extends AppCompatActivity {
         setContentView(R.layout.recipe_layout);
 
 
-
+        final int data = getIntent().getExtras().getInt("recipeindex");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabDelete);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteRecipe(recipe);
+                deleteRecipe(data);
+
             }
         });
 
@@ -98,7 +99,7 @@ public class RecipeActivity extends AppCompatActivity {
                 setEditable();
                 break;
             case R.id.delete_recipe:
-                deleteRecipe();
+
                 break;
         }
 
@@ -117,7 +118,10 @@ public class RecipeActivity extends AppCompatActivity {
         title.setFocusableInTouchMode(true);
     }
 
-    public void deleteRecipe(){
+    public void deleteRecipe(int data){
 
+        RecipeManager.getList().remove(data);
+        new CookApp.RecipesListFragment();
+        
     }
 }

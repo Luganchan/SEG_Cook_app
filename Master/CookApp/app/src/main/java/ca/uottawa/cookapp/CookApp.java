@@ -51,7 +51,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
     private ViewPager mViewPager;
 
     public Toolbar toolbar;
-
+    static RecipeArrayAdapter Recipeadapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -277,13 +277,14 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
             };
 
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), RecipeManager.getList());
-            listView.setAdapter(adapter);
+            Recipeadapter = new RecipeArrayAdapter(this.getContext(), RecipeManager.getList());
+            listView.setAdapter(Recipeadapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Intent intent = new Intent (getContext(),RecipeActivity.class);
+                    intent.putExtra("recipeindex",position);
                     startActivityForResult(intent,0);
 
 //                    final Recipe item = (Recipe) parent.getItemAtPosition(position);
@@ -326,6 +327,16 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
             startActivity(intent);
         }
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+
+        if(resultCode == RESULT_CANCELED)
+        {
+            Recipeadapter.notifyDataSetChanged();
+        }
+    }
+
 }
 
 
