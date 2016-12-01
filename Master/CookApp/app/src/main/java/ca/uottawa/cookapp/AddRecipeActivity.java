@@ -19,6 +19,7 @@ public class AddRecipeActivity extends AppCompatActivity {
         setContentView(R.layout.add_recipe_layout);
         setTitle("Add Recipe");
         setVisible(true);
+        /*
         FloatingActionButton save = (FloatingActionButton) findViewById(R.id.save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,6 +27,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                 //saveRecipe();
             }
         });
+        */
     }
     /*
     public void saveRecipe(){

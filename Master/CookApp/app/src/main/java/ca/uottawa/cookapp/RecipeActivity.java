@@ -63,20 +63,6 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton heart = (FloatingActionButton) findViewById(R.id.heart);
-        heart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setIsFavourite();
-            }
-        });
-        FloatingActionButton delete = (FloatingActionButton) findViewById(R.id.delete);
-        heart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deleteRecipe();
-            }
-        });
     }
     public void setIsFavourite(){
         if (this.isFavourite==true){
