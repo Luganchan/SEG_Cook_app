@@ -1,5 +1,6 @@
 package ca.uottawa.cookapp;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -28,6 +29,7 @@ public class RecipeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.recipe_layout);
 
 
@@ -58,7 +60,7 @@ public class RecipeActivity extends AppCompatActivity {
 
         ImageView imageView = (ImageView) findViewById(R.id.recipe_image);
         //imageView.setImageDrawable(recipe.drawable);
-//Create an ArrayAdapter and Set it on the ListView
+    //Create an ArrayAdapter and Set it on the ListView
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
@@ -66,6 +68,7 @@ public class RecipeActivity extends AppCompatActivity {
         });
 
     }
+
     public void setIsFavourite(){
         if (this.isFavourite==true){
             this.isFavourite=false;
@@ -121,7 +124,10 @@ public class RecipeActivity extends AppCompatActivity {
     public void deleteRecipe(int data){
 
         RecipeManager.getList().remove(data);
+
         new CookApp.RecipesListFragment();
         
     }
+
+
 }
