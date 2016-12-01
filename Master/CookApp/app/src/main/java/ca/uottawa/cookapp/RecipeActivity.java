@@ -47,7 +47,7 @@ public class RecipeActivity extends AppCompatActivity {
 
         ImageView imageView = (ImageView) findViewById(R.id.recipe_image);
         //imageView.setImageDrawable(recipe.drawable);
-//Create an ArrayAdapter and Set it on the ListView
+    //Create an ArrayAdapter and Set it on the ListView
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
@@ -55,14 +55,7 @@ public class RecipeActivity extends AppCompatActivity {
         });
 
     }
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Intent intent = getIntent();
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        finish();
-        startActivity(intent);
-    }
+
     public void setIsFavourite(){
         if (this.isFavourite==true){
             this.isFavourite=false;

@@ -13,7 +13,5 @@ public class RecipeManager {
         return recipeList;
     }
 
-    public Recipe getRecipe(int id){
-        return recipeList.get(id);
-    }
+
 }

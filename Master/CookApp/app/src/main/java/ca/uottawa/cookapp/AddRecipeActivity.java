@@ -32,7 +32,7 @@ public class AddRecipeActivity extends AppCompatActivity {
     }
 
     public void save(View view){
-    Recipe newRecipe= new Recipe(1,null, findViewById(R.id.editName).toString(), ingredients);
+    Recipe newRecipe= new Recipe(RecipeManager.recipeList.size()+1,null, findViewById(R.id.editName).toString(), ingredients);
         RecipeManager.recipeList.add(newRecipe);
         this.finish();
 
