@@ -80,6 +80,8 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
         RecipeManager.recipeList.add(salad);
 
+        FavouriteRecipeManager favouriteRecipeManager = new FavouriteRecipeManager();
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -323,8 +325,9 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                     tempFav.add(i,RecipeManager.getList().get(i));
                 }
             }
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), tempFav);
-            listView.setAdapter(adapter);
+            Recipeadapter = new RecipeArrayAdapter(this.getContext(), FavouriteRecipeManager.getList());
+            listView.setAdapter(Recipeadapter);
+
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override

@@ -82,6 +82,12 @@ public class RecipeActivity extends AppCompatActivity {
                 deleteRecipe(data);
             }
         });
+        Button favourite = (Button) findViewById(R.id.favourite_button);
+        favourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {favouriteRecipe(data);
+            }
+        });
 
     }
 
@@ -128,6 +134,13 @@ public class RecipeActivity extends AppCompatActivity {
         title.setClickable(true);
         title.setFocusableInTouchMode(true);
     }
+
+    public void favouriteRecipe(int data){
+        Recipe favourite = RecipeManager.getList().get(data);
+        favourite.setIsFavourite(true);
+        FavouriteRecipeManager.updateFavourites();
+    }
+
 
     public void deleteRecipe(int data){
         RecipeManager.getList().remove(data);
