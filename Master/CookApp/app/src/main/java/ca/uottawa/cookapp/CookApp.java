@@ -317,8 +317,13 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
             View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
 
-
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(),RecipeManager.recipeList);
+            ArrayList<Recipe> tempFav = new ArrayList<Recipe>();
+            for (int i=0; i<RecipeManager.getList().size(); i++){
+                if (RecipeManager.getList().get(i).getIsFavourite()==true){
+                    tempFav.add(i,RecipeManager.getList().get(i));
+                }
+            }
+            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), tempFav);
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

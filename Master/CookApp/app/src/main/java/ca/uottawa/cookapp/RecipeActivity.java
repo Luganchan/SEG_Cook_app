@@ -84,7 +84,7 @@ public class RecipeActivity extends AppCompatActivity {
         });
 
     }
-    
+
 
     public void deleteRecipe(Recipe recipe){
 
