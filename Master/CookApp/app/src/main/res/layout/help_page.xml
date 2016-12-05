@@ -3,7 +3,31 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:text="TextView"
+        android:text="This is the CookApp help page
+- To add a recipe to the favourites list. Click on the recipe you wish to add and click on the star butto$
+
+- To search
+ 1. click on search bar
+ 2. type the name or ingredient you wish to find.
+ 3. (optional) add a boolean operator between words such as and or xor and not.
+
+- Adding a recipe to the recipe list
+ 1. Click on the plus action button at the botton of the screen
+ 2. Add the recipe name
+ 3. Add a Discription
+ 4. Add engridient
+ 5. Tap on save to save your recipe to the recipe list.
+
+- To Edit a recipe
+ 1. Click on the recipe you wish to edit
+ 2. Click on the top right drop down button
+ 3. Click on the edit button
+ 4. Procede editing the recipe.
+
+- To delete a recipe.
+ 1, Click on the recipe you wish to delete
+ 2. Click the delete button
+"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/help_page_textview" />
