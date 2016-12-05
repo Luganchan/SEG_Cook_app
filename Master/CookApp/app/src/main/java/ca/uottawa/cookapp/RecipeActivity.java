@@ -34,7 +34,6 @@ public class RecipeActivity extends AppCompatActivity {
         setContentView(R.layout.recipe_layout);
 
         final int data = getIntent().getExtras().getInt("recipeIndex");
-        System.out.println(data + " here");
 
         int position =getIntent().getExtras().getInt("recipeIndex");
         recipe = RecipeManager.getList().get(position);
@@ -140,9 +139,8 @@ public class RecipeActivity extends AppCompatActivity {
     }
 
     public void deleteRecipe(int data){
-
-        System.out.println(data + "here 2");
         RecipeManager.getList().remove(data);
+
         finish();
         
     }

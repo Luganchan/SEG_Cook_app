@@ -292,8 +292,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
             Recipeadapter = new RecipeArrayAdapter(this.getContext(), RecipeManager.getList());
             listView.setAdapter(Recipeadapter);
 
-            RecipeArrayAdapter adapter = new RecipeArrayAdapter(this.getContext(), RecipeManager.recipeList);
-            listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -343,7 +341,9 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
         if(resultCode == RESULT_CANCELED)
         {
+            System.out.println("HELOOO");
             Recipeadapter.notifyDataSetChanged();
+
         }
     }
 
