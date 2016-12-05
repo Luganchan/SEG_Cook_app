@@ -26,7 +26,6 @@ public class RecipeActivity extends AppCompatActivity {
     String setTitle;
     Boolean isFavourite;
     Recipe recipe;
-    int data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +33,8 @@ public class RecipeActivity extends AppCompatActivity {
 
         setContentView(R.layout.recipe_layout);
 
-
-
-        int data = getIntent().getExtras().getInt("recipeindex");
-
+        final int data = getIntent().getExtras().getInt("recipeIndex");
+        System.out.println(data + " here");
 
         int position =getIntent().getExtras().getInt("recipeIndex");
         recipe = RecipeManager.getList().get(position);
@@ -68,11 +65,18 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
 
+        //delete button function
+
+        Button deletebutton = (Button) findViewById(R.id.deletebutton);
+        deletebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteRecipe(data);
+            }
+        });
+
     }
-    public void onClickdelete(View view){
-        deleteRecipe(data);
-        finish();
-    }
+
 
     public void setIsFavourite(){
         if (this.isFavourite==true){
@@ -128,9 +132,9 @@ public class RecipeActivity extends AppCompatActivity {
 
     public void deleteRecipe(int data){
 
+        System.out.println(data + "here 2");
         RecipeManager.getList().remove(data);
-
-        //new CookApp.RecipesListFragment();
+        finish();
         
     }
 

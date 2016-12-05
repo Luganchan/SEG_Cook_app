@@ -13,5 +13,4 @@ public class RecipeManager {
         return recipeList;
     }
 
-
 }

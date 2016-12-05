@@ -105,10 +105,10 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               openAddRecipe();
-            }
+                @Override
+                public void onClick(View view) {
+                    openAddRecipe();
+                }
         });
 
     }
@@ -308,7 +308,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Intent intent = new Intent (getContext(),RecipeActivity.class);
                     intent.putExtra("recipeIndex",position);
-                    startActivityForResult(intent,0);
+                    startActivityForResult(intent,262);
 
                 }
             });
