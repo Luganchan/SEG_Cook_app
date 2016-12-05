@@ -84,16 +84,7 @@ public class RecipeActivity extends AppCompatActivity {
         });
 
     }
-
-
-    public void setIsFavourite(){
-        if (this.isFavourite==true){
-            this.isFavourite=false;
-        }else if (this.isFavourite==false){
-            this.isFavourite=false;
-        }
-
-    }
+    
 
     public void deleteRecipe(Recipe recipe){
 
