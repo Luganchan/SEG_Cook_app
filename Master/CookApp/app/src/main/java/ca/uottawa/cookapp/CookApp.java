@@ -57,24 +57,16 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cook_app);
-        ArrayList <String> ingredients= new ArrayList <String>();
-        ingredients.add("Pasta");
-        ingredients.add("Butter");
-
-        ingredients.add("Olives");
-        ingredients.add("Peperoni");
-        ingredients.add("Cheese");
-        ingredients.add("Bread");
 
 
         //RecipeManager recipeManager = new RecipeManager();
-        Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", ingredients );
+        Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", new String[]{"Water", "Bread", "Butter", "tomatoes", "shit" , "fuck", "Crap"});
 
-        Recipe soup = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.soupe), "Soup", ingredients );
-        Recipe bread = new Recipe(2,ContextCompat.getDrawable(getApplicationContext(), R.drawable.bread), "Bread", ingredients );
-        Recipe pizza = new Recipe(3,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pepperoni_pizza), "Pizza", ingredients );
-        Recipe perogies = new Recipe(4,ContextCompat.getDrawable(getApplicationContext(), R.drawable.perogies), "Perogies", ingredients );
-        Recipe salad = new Recipe(5,ContextCompat.getDrawable(getApplicationContext(), R.drawable.garden), "Salad", ingredients );
+        Recipe soup = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.soupe), "Soup",  new String[]{"Water", "Bread", "Butter", "tomatoes"});
+        Recipe bread = new Recipe(2,ContextCompat.getDrawable(getApplicationContext(), R.drawable.bread), "Bread", new String[]{"Water", "Bread", "Butter", "tomatoes"});
+        Recipe pizza = new Recipe(3,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pepperoni_pizza), "Pizza", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
+        Recipe perogies = new Recipe(4,ContextCompat.getDrawable(getApplicationContext(), R.drawable.perogies), "Perogies", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
+        Recipe salad = new Recipe(5,ContextCompat.getDrawable(getApplicationContext(), R.drawable.garden), "Salad", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
 
 
         RecipeManager.recipeList.add(pasta);
