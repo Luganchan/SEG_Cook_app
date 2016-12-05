@@ -108,7 +108,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
     public void openAddRecipe(){
         Intent intent = new Intent(this, AddRecipeActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,262);
     }
 
 
