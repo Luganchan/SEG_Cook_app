@@ -59,6 +59,14 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         setContentView(R.layout.cook_app);
         ArrayList <String> ingredients= new ArrayList <String>();
         ingredients.add("Pasta");
+        ingredients.add("Butter");
+
+        ingredients.add("Olives");
+        ingredients.add("Peperoni");
+        ingredients.add("Cheese");
+        ingredients.add("Bread");
+
+
         //RecipeManager recipeManager = new RecipeManager();
         Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", ingredients );
 
