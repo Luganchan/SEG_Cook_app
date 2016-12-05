@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class IngredientArrayAdapter extends ArrayAdapter<String> {
     private final Context context;
-    private final ArrayList<String> values;
-    public IngredientArrayAdapter(Context context, ArrayList<String> values) {
+    private final String[] values;
+    public IngredientArrayAdapter(Context context, String[] values) {
         super(context, R.layout.ingredient_item, values);
         this.context = context;
         this.values = values;
@@ -27,8 +27,8 @@ public class IngredientArrayAdapter extends ArrayAdapter<String> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.ingredient_item, parent, false);
-        TextView textView = (TextView) rowView.findViewById(R.id.ingredient);
-        textView.setText(values.get((position)));
+        TextView textView = (TextView) rowView.findViewById(R.id.ingredient_text);
+        textView.setText(values[position]);
 
         return rowView;
     }

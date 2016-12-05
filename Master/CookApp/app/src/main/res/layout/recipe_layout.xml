@@ -20,12 +20,6 @@
                 app:srcCompat="@mipmap/ic_launcher"
                 android:id="@+id/recipe_image" />
 
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="224dp"
-                android:id="@+id/ingredient_list"
-                android:layout_gravity="center_horizontal|bottom" />
-
             <TextView
                 android:text="Title"
                 android:layout_width="match_parent"
@@ -33,6 +27,13 @@
                 android:id="@+id/recipe_title"
                 android:textSize="30sp"
                 android:layout_gravity="center" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="241dp"
+                android:id="@+id/ingredient_list"
+                android:layout_gravity="center_horizontal|bottom" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

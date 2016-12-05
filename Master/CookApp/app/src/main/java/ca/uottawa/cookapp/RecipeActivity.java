@@ -38,17 +38,26 @@ public class RecipeActivity extends AppCompatActivity {
 
         int position =getIntent().getExtras().getInt("recipeIndex");
         recipe = RecipeManager.getList().get(position);
+
+
         //setTitle(RecipeManager.recipeList);
 // Get ListView object from xml layout
         ListView listView = (ListView) findViewById(R.id.ingredient_list);
-//Defining Array values to show in ListView
-        ArrayList<String> ingredients = recipe.ingredients;
+//Defining Array values to show in
+
+
+        String[] ingredients = recipe.getIngredients();
+
+
 //Converting Array to ArrayList
         final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < ingredients.size(); ++i) {
-            list.add(ingredients.get(i));
+        for (int i = 0; i < ingredients.length; ++i) {
+            list.add(ingredients[i]);
         }
 
+        for (int i = 0; i<ingredients.length; i++){
+            System.out.println(ingredients[i]);
+        }
 
         IngredientArrayAdapter adapter = new IngredientArrayAdapter(this.getApplicationContext(), ingredients);
         listView.setAdapter(adapter);

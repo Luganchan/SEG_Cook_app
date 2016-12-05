@@ -25,13 +25,13 @@ public class Recipe extends AppCompatActivity implements Serializable {
 
     Drawable drawable;
     TextView title, dscription;
-    ArrayList <String> ingredients;
+    String[] ingredients;
     String setTitle;
     Boolean isFavourite;
     int id;
 
 
-    public Recipe(int id, Drawable drawable, String setTitle, ArrayList <String> ingredients) {
+    public Recipe(int id, Drawable drawable, String setTitle, String[] ingredients) {
         this.drawable = drawable;
         this.setTitle = setTitle;
         this.ingredients = ingredients;
@@ -47,7 +47,7 @@ public class Recipe extends AppCompatActivity implements Serializable {
         return setTitle;
     }
 
-    public ArrayList <String> getIngredients() {
+    public String[] getIngredients() {
         return ingredients;
     }
 
@@ -59,7 +59,7 @@ public class Recipe extends AppCompatActivity implements Serializable {
         this.setTitle = setTitle;
     }
 
-    public void setRecipeIngredients(ArrayList <String> ingredients) {
+    public void setRecipeIngredients(String[] ingredients) {
         this.ingredients = ingredients;
     }
 

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class AddRecipeActivity extends AppCompatActivity {
     public Button saveButton;
-    ArrayList <String> ingredients = new ArrayList <String>();
+    String[] ingredients = new String[100];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +29,15 @@ public class AddRecipeActivity extends AppCompatActivity {
 
 
     }
-    public void addIngredient(View view){
+    public void addIngredient(View view) {
         EditText ingr;
-        ingr =(EditText)findViewById(R.id.editName);
-        ingredients.add(ingr.getText().toString());
+        ingr = (EditText) findViewById(R.id.editName);
+        int i = 0;
+        while (ingredients[i] != null){
+            i++;
+    }
+        ingredients[i] = (ingr.getText().toString());
+
     }
 
     public void save(View view){
