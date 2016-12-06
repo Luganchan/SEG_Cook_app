@@ -53,6 +53,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
     public Toolbar toolbar;
     static RecipeArrayAdapter Recipeadapter;
+    static RecipeArrayAdapter Favouriteadapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -325,8 +326,8 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                     tempFav.add(i,RecipeManager.getList().get(i));
                 }
             }
-            Recipeadapter = new RecipeArrayAdapter(this.getContext(), FavouriteRecipeManager.getList());
-            listView.setAdapter(Recipeadapter);
+            Favouriteadapter = new RecipeArrayAdapter(this.getContext(), FavouriteRecipeManager.getList());
+            listView.setAdapter(Favouriteadapter);
 
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -349,7 +350,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
         if(resultCode == RESULT_CANCELED)
         {
-            System.out.println("HELOOO");
+            System.out.println("Onactivitresult");
             Recipeadapter.notifyDataSetChanged();
 
         }

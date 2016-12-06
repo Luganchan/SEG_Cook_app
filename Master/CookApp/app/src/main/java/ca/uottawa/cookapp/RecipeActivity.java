@@ -72,9 +72,7 @@ public class RecipeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
             }
         });
-
         //delete button function
-
         Button deletebutton = (Button) findViewById(R.id.deletebutton);
         deletebutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +80,8 @@ public class RecipeActivity extends AppCompatActivity {
                 deleteRecipe(data);
             }
         });
+
+        // favourite button
         Button favourite = (Button) findViewById(R.id.favourite_button);
         favourite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,12 +89,6 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-
-    public void deleteRecipe(Recipe recipe){
-
-        RecipeManager.recipeList.remove(recipe);
     }
 
     @Override
@@ -144,7 +138,6 @@ public class RecipeActivity extends AppCompatActivity {
 
     public void deleteRecipe(int data){
         RecipeManager.getList().remove(data);
-
         finish();
         
     }
