@@ -173,12 +173,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
     }
 
 
-    public void openFilterActivity(){
-        Intent intent = new Intent(this, FilterActivity.class);
-        startActivity(intent);
-
-    }
-
     public void openHelpPage(){
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
