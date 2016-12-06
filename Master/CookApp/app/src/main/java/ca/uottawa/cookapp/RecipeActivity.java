@@ -54,10 +54,6 @@ public class RecipeActivity extends AppCompatActivity {
             list.add(ingredients[i]);
         }
 
-        for (int i = 0; i<ingredients.length; i++){
-            System.out.println(ingredients[i]);
-        }
-
         IngredientArrayAdapter adapter = new IngredientArrayAdapter(this.getApplicationContext(), ingredients);
         listView.setAdapter(adapter);
 

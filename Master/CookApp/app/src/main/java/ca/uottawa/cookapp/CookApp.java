@@ -350,8 +350,8 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
         if(resultCode == RESULT_CANCELED)
         {
-            System.out.println("Onactivitresult");
             Recipeadapter.notifyDataSetChanged();
+            Favouriteadapter.notifyDataSetChanged();
 
         }
     }
