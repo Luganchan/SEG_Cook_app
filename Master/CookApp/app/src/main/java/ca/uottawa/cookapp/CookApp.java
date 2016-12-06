@@ -61,13 +61,12 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
 
         //RecipeManager recipeManager = new RecipeManager();
-        Recipe pasta = new Recipe(0,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", new String[]{"Water", "Bread", "Butter"});
-
-        Recipe soup = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.soupe), "Soup",  new String[]{"Water", "Bread", "Butter", "tomatoes"});
-        Recipe bread = new Recipe(2,ContextCompat.getDrawable(getApplicationContext(), R.drawable.bread), "Bread", new String[]{"Water", "Bread", "Butter", "tomatoes"});
-        Recipe pizza = new Recipe(3,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pepperoni_pizza), "Pizza", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
-        Recipe perogies = new Recipe(4,ContextCompat.getDrawable(getApplicationContext(), R.drawable.perogies), "Perogies", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
-        Recipe salad = new Recipe(5,ContextCompat.getDrawable(getApplicationContext(), R.drawable.garden), "Salad", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
+        Recipe pasta = new Recipe(0,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", new String[]{"Water", "Bread", "Butter"},null,null);
+        Recipe soup = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.soupe), "Soup",  new String[]{"Water", "Bread", "Butter", "tomatoes"},null,null);
+        Recipe bread = new Recipe(2,ContextCompat.getDrawable(getApplicationContext(), R.drawable.bread), "Bread", new String[]{"Water", "Bread", "Butter", "tomatoes"},null,null);
+        Recipe pizza = new Recipe(3,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pepperoni_pizza), "Pizza", new String[]{"Water", "Bread", "Butter", "tomatoes"} ,null,null);
+        Recipe perogies = new Recipe(4,ContextCompat.getDrawable(getApplicationContext(), R.drawable.perogies), "Perogies", new String[]{"Water", "Bread", "Butter", "tomatoes"},null,null );
+        Recipe salad = new Recipe(5,ContextCompat.getDrawable(getApplicationContext(), R.drawable.garden), "Salad", new String[]{"Water", "Bread", "Butter", "tomatoes"} ,null,null);
 
 
         RecipeManager.recipeList.add(pasta);
@@ -167,11 +166,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         return super.onOptionsItemSelected(item);
     }
 
-    public void openSettingsActivity(){
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-    }
-
 
     public void openHelpPage(){
         Intent intent = new Intent(this, HelpActivity.class);
@@ -210,9 +204,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.cook_app, container, false);
-
-            return rootView;
+            return inflater.inflate(R.layout.cook_app, container, false);
         }
     }
 
@@ -272,11 +264,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
             ListView listView = (ListView) view.findViewById(R.id.list);
 
 
-
-            String[] ingredients = new String[]{"bread"};
-
-
-
             Recipeadapter = new RecipeArrayAdapter(this.getContext(), RecipeManager.getList());
             listView.setAdapter(Recipeadapter);
 
@@ -307,7 +294,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
             ArrayList<Recipe> tempFav = new ArrayList<Recipe>();
             for (int i=0; i<RecipeManager.getList().size(); i++){
-                if (RecipeManager.getList().get(i).getIsFavourite()==true){
+                if (RecipeManager.getList().get(i).getIsFavourite()){
                     tempFav.add(i,RecipeManager.getList().get(i));
                 }
             }
