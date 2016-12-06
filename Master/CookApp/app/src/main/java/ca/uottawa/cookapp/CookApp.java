@@ -130,8 +130,22 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
     @Override
     public boolean onQueryTextSubmit(String newText) {
         // User pressed the search button		        // User pressed the search button
-        // User changed the text
         if(newText != null && !newText.isEmpty()){
+
+            String[] wordArray = newText.toLowerCase().split(" ");
+            ArrayList<String>[] thingsToSearch = new ArrayList[wordArray.length];
+            int wordArrayIndex=0;
+            int thingsToSearchIndex = 0;
+            for (int i = 0; i<wordArray.length; i++){
+                if(wordArray[i]=="and"){
+                    i++;
+                }
+                else if(wordArray[i]=="or"){
+                    i++;
+                    thingsToSearchIndex++;
+                }
+            }
+
             ArrayList<Recipe> lstFound = new ArrayList<>();
             for(int i = 0; i<RecipeManager.getList().size();i++){
                 if(RecipeManager.getList().get(i).getRecipeTitle().toLowerCase().contains(newText.toLowerCase()))
