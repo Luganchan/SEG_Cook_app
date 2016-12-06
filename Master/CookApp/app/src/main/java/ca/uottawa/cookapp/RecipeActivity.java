@@ -127,7 +127,7 @@ public class RecipeActivity extends AppCompatActivity {
 
     public void favouriteRecipe(int data){
         Recipe favourite = RecipeManager.getList().get(data);
-        favourite.setIsFavourite(true);
+        favourite.setIsFavourite();
         FavouriteRecipeManager.updateFavourites();
     }
 

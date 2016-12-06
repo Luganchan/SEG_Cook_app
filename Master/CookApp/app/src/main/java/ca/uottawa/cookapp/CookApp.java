@@ -81,9 +81,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
         RecipeManager.recipeList.add(salad);
 
-        FavouriteRecipeManager favouriteRecipeManager = new FavouriteRecipeManager();
-
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -163,12 +160,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         int id = item.getItemId();
 
         switch (id){
-            case R.id.action_filter:
-                openFilterActivity();
-                break;
-            case R.id.action_settings:
-                openSettingsActivity();
-                break;
             case R.id.help_page_button:
                 openHelpPage();
         }
@@ -347,13 +338,8 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-
-        if(resultCode == RESULT_CANCELED)
-        {
             Recipeadapter.notifyDataSetChanged();
             Favouriteadapter.notifyDataSetChanged();
-
-        }
     }
 
 }

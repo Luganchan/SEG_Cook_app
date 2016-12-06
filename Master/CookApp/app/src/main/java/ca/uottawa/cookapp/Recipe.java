@@ -63,8 +63,12 @@ public class Recipe extends AppCompatActivity implements Serializable {
         this.ingredients = ingredients;
     }
 
-    public void setIsFavourite(Boolean favourite) {
-        this.isFavourite = favourite;
+    public void setIsFavourite() {
+        if( this.getIsFavourite()==true){
+            this.isFavourite=false;
+        }else if (this.getIsFavourite()==false){
+            this.isFavourite=true;
+        }
     }
 
     public boolean getIsFavourite() {
