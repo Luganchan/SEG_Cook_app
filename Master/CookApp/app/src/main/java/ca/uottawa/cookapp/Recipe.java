@@ -1,42 +1,32 @@
 package ca.uottawa.cookapp;
 
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ButtonBarLayout;
-import android.text.InputType;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-
+//import android.widget.TextView;
 import java.io.Serializable;
-import java.util.ArrayList;
 
-/**
- * Created by shawnco on 11/23/16.
- */
+
+
 
 
 public class Recipe extends AppCompatActivity implements Serializable {
 
     Drawable drawable;
-    TextView title, dscription;
-    String[] ingredients;
+    String description;
+    String[] ingredients, type;
     String setTitle;
     Boolean isFavourite;
     int id;
 
 
-    public Recipe(int id, Drawable drawable, String setTitle, String[] ingredients) {
+    public Recipe(int id, Drawable drawable, String setTitle, String[] ingredients, String[] type, String description) {
         this.drawable = drawable;
         this.setTitle = setTitle;
         this.ingredients = ingredients;
         this.isFavourite = false;
         this.id = id;
+        this.type = type;
+        this.description=description;
     }
 
     public Drawable getRecipeDrawable() {
@@ -63,8 +53,12 @@ public class Recipe extends AppCompatActivity implements Serializable {
         this.ingredients = ingredients;
     }
 
-    public void setIsFavourite(Boolean favourite) {
-        this.isFavourite = favourite;
+    public void setIsFavourite() {
+        if( this.getIsFavourite()){
+            this.isFavourite=false;
+        }else if (!this.getIsFavourite()){
+            this.isFavourite=true;
+        }
     }
 
     public boolean getIsFavourite() {
@@ -77,6 +71,15 @@ public class Recipe extends AppCompatActivity implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String[] getTypeList(){
+        return type;
+    }
+
+    public void setType(String[] newType){
+        this.type=newType;
+
     }
 
 }

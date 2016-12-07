@@ -1,9 +1,7 @@
 package ca.uottawa.cookapp;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,9 +14,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by shawnco on 11/30/16.
- */
 public class RecipeActivity extends AppCompatActivity {
 
     Drawable drawable;
@@ -54,10 +49,6 @@ public class RecipeActivity extends AppCompatActivity {
             list.add(ingredients[i]);
         }
 
-        for (int i = 0; i<ingredients.length; i++){
-            System.out.println(ingredients[i]);
-        }
-
         IngredientArrayAdapter adapter = new IngredientArrayAdapter(this.getApplicationContext(), ingredients);
         listView.setAdapter(adapter);
 
@@ -72,9 +63,7 @@ public class RecipeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
             }
         });
-
         //delete button function
-
         Button deletebutton = (Button) findViewById(R.id.deletebutton);
         deletebutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +71,8 @@ public class RecipeActivity extends AppCompatActivity {
                 deleteRecipe(data);
             }
         });
+
+        // favourite button
         Button favourite = (Button) findViewById(R.id.favourite_button);
         favourite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,12 +80,14 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
 
-    }
+        // unfavourite button
+        Button unfavourite = (Button) findViewById(R.id.unfavorite);
+        unfavourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {unfavouriteRecipe(data);
+            }
+        });
 
-
-    public void deleteRecipe(Recipe recipe){
-
-        RecipeManager.recipeList.remove(recipe);
     }
 
     @Override
@@ -115,9 +108,11 @@ public class RecipeActivity extends AppCompatActivity {
             case R.id.edit_recipe:
                 setEditable();
                 break;
-            case R.id.delete_recipe:
+
+            case R.id.deletebutton:
 
                 break;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -137,17 +132,25 @@ public class RecipeActivity extends AppCompatActivity {
 
     public void favouriteRecipe(int data){
         Recipe favourite = RecipeManager.getList().get(data);
-        favourite.setIsFavourite(true);
+        favourite.setIsFavourite();
         FavouriteRecipeManager.updateFavourites();
     }
 
 
     public void deleteRecipe(int data){
         RecipeManager.getList().remove(data);
-
+        if (FavouriteRecipeManager.getList().size()>data) {
+            FavouriteRecipeManager.getList().remove(data);
+        }
         finish();
-        
+
     }
 
+    public void unfavouriteRecipe(int data) {
 
+        Recipe unfavourite = FavouriteRecipeManager.getList().get(data);
+        FavouriteRecipeManager.getList().remove(data);
+        unfavourite.setIsFavourite();
+        FavouriteRecipeManager.updateFavourites();
+    }
 }

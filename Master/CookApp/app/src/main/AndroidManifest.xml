@@ -18,12 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FilterActivity" >
-            <!--Default Intent Filter-->
-            <intent-filter>
-                <action android:name="android.intent.action.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity android:name=".SettingsActivity" >
             <!--Default Intent Filter-->
             <intent-filter>

@@ -8,14 +8,6 @@
             android:orderInCategory="100"
             android:title="Edit"
             app:showAsAction="never" />
-
-        <item
-            android:id="@+id/delete_recipe"
-            android:orderInCategory="100"
-            android:title="Delete"
-            app:showAsAction="never" />
-
-
     </group>
 
 

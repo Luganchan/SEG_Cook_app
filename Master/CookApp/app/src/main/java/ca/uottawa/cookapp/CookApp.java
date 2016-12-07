@@ -53,6 +53,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
     public Toolbar toolbar;
     static RecipeArrayAdapter Recipeadapter;
+    static RecipeArrayAdapter Favouriteadapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,13 +61,14 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
 
         //RecipeManager recipeManager = new RecipeManager();
-        Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", new String[]{"Water", "Bread", "Butter","kevinzaft"});
 
-        Recipe soup = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.soupe), "Soup",  new String[]{"Water", "Bread", "Butter", "tomatoes","kevinzaft","kw"});
-        Recipe bread = new Recipe(2,ContextCompat.getDrawable(getApplicationContext(), R.drawable.bread), "Bread", new String[]{"Water", "Bread", "Butter", "tomatoes"});
-        Recipe pizza = new Recipe(3,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pepperoni_pizza), "Pizza", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
-        Recipe perogies = new Recipe(4,ContextCompat.getDrawable(getApplicationContext(), R.drawable.perogies), "Perogies", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
-        Recipe salad = new Recipe(5,ContextCompat.getDrawable(getApplicationContext(), R.drawable.garden), "Salad", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
+        Recipe pasta = new Recipe(0,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", new String[]{"Water", "Bread", "Butter","kevinzaft"},new String[]{"one"},null);
+        Recipe soup = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.soupe), "Soup",  new String[]{"Water", "Bread", "Butter", "tomatoes","kevinzaft"},new String[]{"one", "two"},null);
+        Recipe bread = new Recipe(2,ContextCompat.getDrawable(getApplicationContext(), R.drawable.bread), "Bread", new String[]{"Water", "Bread", "Butter", "tomatoes"},new String[]{"one", "two", "three"},null);
+        Recipe pizza = new Recipe(3,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pepperoni_pizza), "Pizza", new String[]{"Water", "Bread", "Butter", "tomatoes"} ,new String[]{"one", "two", "three","four"},null);
+        Recipe perogies = new Recipe(4,ContextCompat.getDrawable(getApplicationContext(), R.drawable.perogies), "Perogies", new String[]{"Water", "Bread", "Butter", "tomatoes"},new String[]{"one", "two", "three","four","five"},null );
+        Recipe salad = new Recipe(5,ContextCompat.getDrawable(getApplicationContext(), R.drawable.garden), "Salad", new String[]{"Water", "Bread", "Butter", "tomatoes"} ,new String[]{"one", "two", "three","four","five","six"},null);
+
 
 
         RecipeManager.recipeList.add(pasta);
@@ -79,9 +81,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         RecipeManager.recipeList.add(perogies);
 
         RecipeManager.recipeList.add(salad);
-
-        FavouriteRecipeManager favouriteRecipeManager = new FavouriteRecipeManager();
-
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -128,11 +127,20 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
     }
 
     @Override
-    public boolean onQueryTextSubmit(String newText) {
-        // User pressed the search button		        // User pressed the search button
+    public boolean onQueryTextSubmit(String newText) {// User pressed the search button
+
+        //Checks to see if the User actually entered something in the TextField
         if(newText != null && !newText.isEmpty()){
 
-            String[] wordArray = newText.toLowerCase().split(" ");
+            ArrayList<Recipe> lstFound = new ArrayList<>();//ArrayList to hold the search results
+
+            String[] wordArray = newText.toLowerCase().split(" ");//splits the User input String into an array
+
+            /*Creates an array of ArrayLists
+             *each index of the array contains words grouped by "and"
+             * the ArrayLists inside of the array holds the words needed to be checked
+             * when adding to the search results
+             */
             ArrayList<String>[] thingsToSearch = new ArrayList[wordArray.length];
             for (int a = 0; a<thingsToSearch.length;a++){
                 thingsToSearch[a]=new ArrayList<>();
@@ -150,30 +158,38 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                     thingsToSearch[thingsToSearchIndex].add(wordArray[i]);
                 }
             }
-            System.out.println(thingsToSearch[0]);
-            ArrayList<Recipe> lstFound = new ArrayList<>();
 
+            /*
+             *this while loop loops through the array (of ArrayList) indices that actually have a ArrayList
+             * and then does some logic to determine if it should be added to the search results or not
+             */
             while(thingsToSearchIndex>=0){
                 for(int i = 0; i<RecipeManager.getList().size();i++){//Goes though all of the stored recipes
                     boolean inTitle = false;
                     boolean okToAddToSearch = false;
                     boolean foundCurrent = false;
-                    for (int z= 0; z <thingsToSearch[thingsToSearchIndex].size();z++) {//goes through all of the things the stored recipe needs
-
+                    for (int z= 0; z <thingsToSearch[thingsToSearchIndex].size();z++) {//goes through all of the things the stored recipe needs to have
+                        //checks to see if the word is in the title
                         if((RecipeManager.getList().get(i).getRecipeTitle().toLowerCase().contains(thingsToSearch[thingsToSearchIndex].get(z)))){
                             inTitle = true;
                         }
                         else {
                             for (int x = 0; x < RecipeManager.getList().get(i).getIngredients().length; x++) {//checks the stored recipe's ingredients
-                                //if the recipe does not have the ^^^^ then we wont add this to the search results
                                 if (RecipeManager.getList().get(i).getIngredients()[x].toLowerCase().contains(thingsToSearch[thingsToSearchIndex].get(z))) {
                                     okToAddToSearch = true;
                                     foundCurrent = true;
                                 }
-                                //                            if((RecipeManager.getList().get(i).getRecipeTitle().toLowerCase().contains(thingsToSearch[thingsToSearchIndex].get(z)))||(RecipeManager.getList().get(i).getIngredients()[x].toLowerCase().contains(thingsToSearch[thingsToSearchIndex].get(z)))){
-                                //                                allGood = true;
-                                //                            }
                             }
+                            for (int x = 0; x < RecipeManager.getList().get(i).getTypeList().length; x++) {//checks the stored recipe's types
+                                if (RecipeManager.getList().get(i).getTypeList()[x].toLowerCase().contains(thingsToSearch[thingsToSearchIndex].get(z))) {
+                                    okToAddToSearch = true;
+                                    foundCurrent = true;
+                                }
+                            }
+                            /*
+                             * as soon as the recipe does not find the word in the title, ingredients, or types,
+                             * disqualify this recipe
+                             */
                             if (!foundCurrent&&!inTitle){
                                 okToAddToSearch = false;
                                 break;
@@ -182,7 +198,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                         }
                         inTitle=false;
                     }
-                    System.out.println(okToAddToSearch+"@@@@@@");
+                    //adds to the search results if the recipe has what the User searched for
                     if (okToAddToSearch){
                         lstFound.add(RecipeManager.getList().get(i));
                     }
@@ -192,12 +208,10 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                 thingsToSearchIndex--;
             }
 
-//            for(int i = 0; i<RecipeManager.getList().size();i++){
-//                if(RecipeManager.getList().get(i).getRecipeTitle().toLowerCase().contains(newText.toLowerCase()))
-//                    lstFound.add(RecipeManager.getList().get(i));
-//            }
-            tempSearchHolder =lstFound;
+            tempSearchHolder =lstFound;//
         }
+
+        // if the User entered nothing into the search bar then don't do anything
         else{
             tempSearchHolder = new ArrayList<>();
         }
@@ -221,12 +235,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         int id = item.getItemId();
 
         switch (id){
-            case R.id.action_filter:
-                openFilterActivity();
-                break;
-            case R.id.action_settings:
-                openSettingsActivity();
-                break;
             case R.id.help_page_button:
                 openHelpPage();
         }
@@ -234,17 +242,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         return super.onOptionsItemSelected(item);
     }
 
-    public void openSettingsActivity(){
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-    }
-
-
-    public void openFilterActivity(){
-        Intent intent = new Intent(this, FilterActivity.class);
-        startActivity(intent);
-
-    }
 
     public void openHelpPage(){
         Intent intent = new Intent(this, HelpActivity.class);
@@ -283,9 +280,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.cook_app, container, false);
-
-            return rootView;
+            return inflater.inflate(R.layout.cook_app, container, false);
         }
     }
 
@@ -345,11 +340,6 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
             ListView listView = (ListView) view.findViewById(R.id.list);
 
 
-
-            String[] ingredients = new String[]{"bread"};
-
-
-
             Recipeadapter = new RecipeArrayAdapter(this.getContext(), RecipeManager.getList());
             listView.setAdapter(Recipeadapter);
 
@@ -380,12 +370,12 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
             ArrayList<Recipe> tempFav = new ArrayList<Recipe>();
             for (int i=0; i<RecipeManager.getList().size(); i++){
-                if (RecipeManager.getList().get(i).getIsFavourite()==true){
+                if (RecipeManager.getList().get(i).getIsFavourite()){
                     tempFav.add(i,RecipeManager.getList().get(i));
                 }
             }
-            Recipeadapter = new RecipeArrayAdapter(this.getContext(), FavouriteRecipeManager.getList());
-            listView.setAdapter(Recipeadapter);
+            Favouriteadapter = new RecipeArrayAdapter(this.getContext(), FavouriteRecipeManager.getList());
+            listView.setAdapter(Favouriteadapter);
 
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -405,13 +395,8 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-
-        if(resultCode == RESULT_CANCELED)
-        {
-            System.out.println("HELOOO");
             Recipeadapter.notifyDataSetChanged();
-
-        }
+            Favouriteadapter.notifyDataSetChanged();
     }
 
 }
