@@ -383,7 +383,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Intent intent = new Intent (getContext(),RecipeActivity.class);
-                    intent.putExtra("favouritesRecipeIndex",position);
+                    intent.putExtra("FavouritesRecipeIndex",position);
                     intent.putExtra("Class", "Favourites");
 
                     startActivityForResult(intent,5);
