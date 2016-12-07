@@ -109,6 +109,10 @@ public class RecipeActivity extends AppCompatActivity {
                 setEditable();
                 break;
 
+            case R.id.deletebutton:
+
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);
