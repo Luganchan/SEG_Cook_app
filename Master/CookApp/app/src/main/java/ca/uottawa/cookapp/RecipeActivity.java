@@ -85,6 +85,14 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
 
+        // unfavourite button
+        Button unfavourite = (Button) findViewById(R.id.unfavorite);
+        unfavourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {unfavouriteRecipe(data);
+            }
+        });
+
     }
 
     @Override
@@ -105,7 +113,7 @@ public class RecipeActivity extends AppCompatActivity {
             case R.id.edit_recipe:
                 setEditable();
                 break;
-            case R.id.delete_recipe:
+            case R.id.deletebutton:
 
                 break;
         }
@@ -134,9 +142,18 @@ public class RecipeActivity extends AppCompatActivity {
 
     public void deleteRecipe(int data){
         RecipeManager.getList().remove(data);
+        if (FavouriteRecipeManager.getList().size()>data) {
+            FavouriteRecipeManager.getList().remove(data);
+        }
         finish();
         
     }
 
+    public void unfavouriteRecipe(int data) {
 
+        Recipe unfavourite = FavouriteRecipeManager.getList().get(data);
+        FavouriteRecipeManager.getList().remove(data);
+        unfavourite.setIsFavourite();
+        FavouriteRecipeManager.updateFavourites();
+    }
 }
