@@ -22,45 +22,48 @@
                     android:layout_width="match_parent"
                     android:layout_height="253dp"
                     app:srcCompat="@mipmap/ic_launcher"
-                    android:id="@+id/imageView4" />
+                    android:id="@+id/recipe_image" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editName"
                     android:layout_gravity="center_horizontal"
-                    android:text="Tap to change recipe name" />
+                    android:hint="Tap to change recipe name" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editDescription"
                     android:layout_gravity="center_horizontal"
-                    android:text="Tap to change description" />
+                    android:hint="Tap to change description"
+                    android:layout_marginTop="10dp" />
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp">
 
                     <EditText
                         android:layout_width="223dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/addIngredienttext"
-                        android:text="tap to add ingredient" />
+                        android:hint="tap to add ingredient" />
 
                     <Button
                         android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
                         android:text="Add Ingredient"
-                        android:id="@+id/button2"
+                        android:id="@+id/add_ingredient_button"
                         android:clickable="true"
                         android:onClick="addIngredient"
-                        android:layout_column="17" />
+                        android:layout_column="17"
+                        android:gravity="right|center_vertical" />
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp">
 
                     <EditText
                         android:layout_width="221dp"
@@ -71,9 +74,8 @@
 
                     <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:text="Add Type"
-                        android:id="@+id/addType"
+                        android:id="@+id/add_type_button"
                         android:layout_column="17"
                         android:onClick="onClickAddType" />
                 </TableRow>
@@ -90,12 +92,12 @@
 
                     <Button
                         android:layout_width="77dp"
-                        android:layout_height="match_parent"
                         android:text="Save"
-                        android:id="@+id/button3"
+                        android:id="@+id/save_recipe_button"
                         android:layout_gravity="right"
                         android:onClick="save"
-                        android:layout_column="17" />
+                        android:layout_column="17"
+                        android:layout_height="70dp" />
                 </TableRow>
 
             </TableLayout>

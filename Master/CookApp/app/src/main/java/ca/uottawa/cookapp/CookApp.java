@@ -59,9 +59,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cook_app);
 
-
-        //RecipeManager recipeManager = new RecipeManager();
-
+        // create recipes upon start
         Recipe pasta = new Recipe(0,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", new String[]{"Water", "Bread", "Butter","kevinzaft"},new String[]{"one"},null);
         Recipe soup = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.soupe), "Soup",  new String[]{"Water", "Bread", "Butter", "tomatoes","kevinzaft"},new String[]{"one", "two"},null);
         Recipe bread = new Recipe(2,ContextCompat.getDrawable(getApplicationContext(), R.drawable.bread), "Bread", new String[]{"Water", "Bread", "Butter", "tomatoes"},new String[]{"one", "two", "three"},null);
@@ -69,21 +67,17 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         Recipe perogies = new Recipe(4,ContextCompat.getDrawable(getApplicationContext(), R.drawable.perogies), "Perogies", new String[]{"Water", "Bread", "Butter", "tomatoes"},new String[]{"one", "two", "three","four","five"},null );
         Recipe salad = new Recipe(5,ContextCompat.getDrawable(getApplicationContext(), R.drawable.garden), "Salad", new String[]{"Water", "Bread", "Butter", "tomatoes"} ,new String[]{"one", "two", "three","four","five","six"},null);
 
-
-
+        // add recipes into RecipeManager
         RecipeManager.recipeList.add(pasta);
         RecipeManager.recipeList.add(soup);
-
         RecipeManager.recipeList.add(bread);
-
         RecipeManager.recipeList.add(pizza);
-
         RecipeManager.recipeList.add(perogies);
-
         RecipeManager.recipeList.add(salad);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -106,7 +100,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
     }
 
-
+    // addRecipe method
     public void openAddRecipe(){
         Intent intent = new Intent(this, AddRecipeActivity.class);
         startActivityForResult(intent,262);
@@ -242,11 +236,13 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         return super.onOptionsItemSelected(item);
     }
 
-
+    // openHelpPage method
     public void openHelpPage(){
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
     }
+
+    // openSearchResults method
     public void openSearchResults(){
         Intent intent = new Intent(this, SearchResults.class);
         startActivity(intent);
@@ -337,7 +333,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         @Override
         public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
-            ListView listView = (ListView) view.findViewById(R.id.list);
+            ListView listView = (ListView) view.findViewById(R.id.recipe_list);
 
 
             Recipeadapter = new RecipeArrayAdapter(this.getContext(), RecipeManager.getList());
@@ -367,7 +363,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
-            ListView listView = (ListView) view.findViewById(R.id.list);
+            ListView listView = (ListView) view.findViewById(R.id.recipe_list);
 
             ArrayList<Recipe> tempFav = new ArrayList<Recipe>();
             for (int i=0; i<RecipeManager.getList().size(); i++){
@@ -395,6 +391,8 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
     }
 
+
+    // onActivityResult which will catch the intent after button back is pressed . It will update all adapters
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {

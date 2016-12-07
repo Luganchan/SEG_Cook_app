@@ -15,6 +15,6 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/list"
+        android:id="@+id/recipe_list"
         android:clickable="true" />
 </RelativeLayout>

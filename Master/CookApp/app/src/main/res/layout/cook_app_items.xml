@@ -19,18 +19,20 @@
                 android:layout_height="match_parent"
                 android:layout_weight="100">
 
+                <TextView
+                    android:text="Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recipe_title"
+                    android:textSize="18sp"
+                    android:textStyle="normal|italic" />
+
                 <ImageView
                     android:layout_width="244dp"
                     android:layout_height="197dp"
                     android:id="@+id/recipe_image"
                     android:layout_marginLeft="60dp"
                     android:clickable="false" />
-
-                <TextView
-                    android:text="Title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/recipe_title" />
 
             </LinearLayout>
 

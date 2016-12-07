@@ -3,6 +3,7 @@ package ca.uottawa.cookapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -65,7 +66,8 @@ public class AddRecipeActivity extends AppCompatActivity {
         EditText desc;
         desc=(EditText)findViewById(R.id.editDescription);
 
-    Recipe newRecipe= new Recipe(RecipeManager.recipeList.size()+1,null,title.getText().toString(), ingredients,type, desc.getText().toString());
+        Recipe newRecipe= new Recipe(RecipeManager.recipeList.size()+1, ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_launcher),title.getText().toString(), ingredients,type, desc.getText().toString());
+
         RecipeManager.recipeList.add(newRecipe);
         this.finish();
 

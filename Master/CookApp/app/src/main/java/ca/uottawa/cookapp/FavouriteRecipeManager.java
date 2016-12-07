@@ -24,6 +24,7 @@ public class FavouriteRecipeManager {
         return favouritesList;
     }
 
+    // updateFavourites method which will update the favourite list
     public static void updateFavourites(){
         recipeList = RecipeManager.getList();
         for (int i = 0; i< recipeList.size(); i++){
