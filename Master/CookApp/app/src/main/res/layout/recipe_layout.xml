@@ -34,25 +34,41 @@
                 android:id="@+id/ingredient_list"
                 android:layout_gravity="center_horizontal|bottom" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete"
-                android:id="@+id/deletebutton"
-                android:layout_gravity="right|bottom" />
+            <FrameLayout
+                android:layout_width="128dp"
+                android:layout_height="109dp"
+                android:layout_gravity="bottom|right">
 
-            <Button
-                android:text="Favourite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/favourite_button"
-                android:layout_gravity="center_horizontal|bottom" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="112dp">
 
-            <Button
-                android:text="unfavorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/unfavorite" />
+                    <Button
+                        android:text="Favourite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/favourite_button"
+                        android:layout_gravity="bottom|left"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delete"
+                        android:id="@+id/deletebutton"
+                        android:layout_gravity="right|bottom"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:text="unfavorite"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:id="@+id/unfavorite" />
+                </LinearLayout>
+
+            </FrameLayout>
 
         </FrameLayout>
 

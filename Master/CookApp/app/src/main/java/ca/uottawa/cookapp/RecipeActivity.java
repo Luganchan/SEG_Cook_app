@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -74,6 +75,8 @@ public class RecipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 deleteRecipe(data);
+                Toast toast = Toast.makeText(getApplicationContext(),"recipe is deleted",5);
+                toast.show();
             }
         });
 
@@ -82,6 +85,8 @@ public class RecipeActivity extends AppCompatActivity {
         favourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {favouriteRecipe(data);
+                Toast toast = Toast.makeText(getApplicationContext(),"recipe is set as favourite",5);
+                toast.show();
             }
         });
 
@@ -90,6 +95,8 @@ public class RecipeActivity extends AppCompatActivity {
         unfavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {unfavouriteRecipe(data);
+                Toast toast = Toast.makeText(getApplicationContext(),"recipe is removed from favourite",5);
+                toast.show();
             }
         });
 
