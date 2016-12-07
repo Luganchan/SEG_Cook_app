@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import static java.security.AccessController.getContext;
 
@@ -35,6 +36,7 @@ public class SearchResults extends AppCompatActivity implements Serializable {
                 Intent intent = new Intent (getApplicationContext(),RecipeActivity.class);
                 intent.putExtra("recipeIndex",position);
                 startActivityForResult(intent,0);
+                CookApp.tempSearchHolder= new ArrayList<>();
             }
         });
     }

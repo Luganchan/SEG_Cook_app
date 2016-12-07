@@ -60,9 +60,9 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
 
         //RecipeManager recipeManager = new RecipeManager();
-        Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", new String[]{"Water", "Bread", "Butter"});
+        Recipe pasta = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pasta), "Pasta", new String[]{"Water", "Bread", "Butter","kevinzaft"});
 
-        Recipe soup = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.soupe), "Soup",  new String[]{"Water", "Bread", "Butter", "tomatoes"});
+        Recipe soup = new Recipe(1,ContextCompat.getDrawable(getApplicationContext(), R.drawable.soupe), "Soup",  new String[]{"Water", "Bread", "Butter", "tomatoes","kevinzaft","kw"});
         Recipe bread = new Recipe(2,ContextCompat.getDrawable(getApplicationContext(), R.drawable.bread), "Bread", new String[]{"Water", "Bread", "Butter", "tomatoes"});
         Recipe pizza = new Recipe(3,ContextCompat.getDrawable(getApplicationContext(), R.drawable.pepperoni_pizza), "Pizza", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
         Recipe perogies = new Recipe(4,ContextCompat.getDrawable(getApplicationContext(), R.drawable.perogies), "Perogies", new String[]{"Water", "Bread", "Butter", "tomatoes"} );
@@ -134,23 +134,68 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
             String[] wordArray = newText.toLowerCase().split(" ");
             ArrayList<String>[] thingsToSearch = new ArrayList[wordArray.length];
-            int wordArrayIndex=0;
+            for (int a = 0; a<thingsToSearch.length;a++){
+                thingsToSearch[a]=new ArrayList<>();
+            }
             int thingsToSearchIndex = 0;
             for (int i = 0; i<wordArray.length; i++){
-                if(wordArray[i]=="and"){
-                    i++;
+
+                if(wordArray[i].equals("and")){
+                    //does nothing with the word
                 }
-                else if(wordArray[i]=="or"){
-                    i++;
-                    thingsToSearchIndex++;
+                else if(wordArray[i].equals("or")){
+                    thingsToSearchIndex++;//basically number of ORs (total search results -1)
                 }
+                else{
+                    thingsToSearch[thingsToSearchIndex].add(wordArray[i]);
+                }
+            }
+            System.out.println(thingsToSearch[0]);
+            ArrayList<Recipe> lstFound = new ArrayList<>();
+
+            while(thingsToSearchIndex>=0){
+                for(int i = 0; i<RecipeManager.getList().size();i++){//Goes though all of the stored recipes
+                    boolean inTitle = false;
+                    boolean okToAddToSearch = false;
+                    boolean foundCurrent = false;
+                    for (int z= 0; z <thingsToSearch[thingsToSearchIndex].size();z++) {//goes through all of the things the stored recipe needs
+
+                        if((RecipeManager.getList().get(i).getRecipeTitle().toLowerCase().contains(thingsToSearch[thingsToSearchIndex].get(z)))){
+                            inTitle = true;
+                        }
+                        else {
+                            for (int x = 0; x < RecipeManager.getList().get(i).getIngredients().length; x++) {//checks the stored recipe's ingredients
+                                //if the recipe does not have the ^^^^ then we wont add this to the search results
+                                if (RecipeManager.getList().get(i).getIngredients()[x].toLowerCase().contains(thingsToSearch[thingsToSearchIndex].get(z))) {
+                                    okToAddToSearch = true;
+                                    foundCurrent = true;
+                                }
+                                //                            if((RecipeManager.getList().get(i).getRecipeTitle().toLowerCase().contains(thingsToSearch[thingsToSearchIndex].get(z)))||(RecipeManager.getList().get(i).getIngredients()[x].toLowerCase().contains(thingsToSearch[thingsToSearchIndex].get(z)))){
+                                //                                allGood = true;
+                                //                            }
+                            }
+                            if (!foundCurrent&&!inTitle){
+                                okToAddToSearch = false;
+                                break;
+                            }
+                            foundCurrent=false;
+                        }
+                        inTitle=false;
+                    }
+                    System.out.println(okToAddToSearch+"@@@@@@");
+                    if (okToAddToSearch){
+                        lstFound.add(RecipeManager.getList().get(i));
+                    }
+                    okToAddToSearch=false;
+
+                }
+                thingsToSearchIndex--;
             }
 
-            ArrayList<Recipe> lstFound = new ArrayList<>();
-            for(int i = 0; i<RecipeManager.getList().size();i++){
-                if(RecipeManager.getList().get(i).getRecipeTitle().toLowerCase().contains(newText.toLowerCase()))
-                    lstFound.add(RecipeManager.getList().get(i));
-            }
+//            for(int i = 0; i<RecipeManager.getList().size();i++){
+//                if(RecipeManager.getList().get(i).getRecipeTitle().toLowerCase().contains(newText.toLowerCase()))
+//                    lstFound.add(RecipeManager.getList().get(i));
+//            }
             tempSearchHolder =lstFound;
         }
         else{
