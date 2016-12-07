@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,7 @@ public class AddRecipeActivity extends AppCompatActivity {
 
     }
     public void onClickAddType(View view){
+        EditText title =(EditText)findViewById(R.id.editName);
         EditText ingr;
         ingr = (EditText) findViewById(R.id.addTypeText);
         int i = 0;
@@ -38,17 +40,22 @@ public class AddRecipeActivity extends AppCompatActivity {
             i++;
         }
         type[i] = (ingr.getText().toString());
+        Toast toast = Toast.makeText(getApplicationContext(),ingr.getText() + " was added into the list of types for recipe " + title.getText(),5);
+        toast.show();
 
 
     }
     public void addIngredient(View view) {
         EditText ingr;
+        EditText title =(EditText)findViewById(R.id.editName);
         ingr = (EditText) findViewById(R.id.addIngredienttext);
         int i = 0;
         while (ingredients[i] != null){
             i++;
     }
         ingredients[i] = (ingr.getText().toString());
+        Toast toast = Toast.makeText(getApplicationContext(),ingr.getText() + " was added into the list of ingredient for recipe "+ title.getText(),5);
+        toast.show();
 
     }
 
