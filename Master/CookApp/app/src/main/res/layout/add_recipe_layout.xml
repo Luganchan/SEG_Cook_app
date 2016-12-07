@@ -14,12 +14,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="100"
-                android:weightSum="1">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -41,27 +38,74 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Tap to change description" />
 
-                <EditText
-                    android:layout_width="179dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/addIngredienttext"
-                    android:text="tap to add ingredient" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Ingredient"
-                    android:id="@+id/button2"
-                    android:clickable="true"
-                    android:onClick="addIngredient" />
+                    <EditText
+                        android:layout_width="223dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/addIngredienttext"
+                        android:text="tap to add ingredient" />
 
-                <Button
-                    android:layout_width="77dp"
-                    android:layout_height="match_parent"
-                    android:text="Save"
-                    android:id="@+id/button3"
-                    android:layout_gravity="right"
-                    android:onClick="save" />
+                    <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Add Ingredient"
+                        android:id="@+id/button2"
+                        android:clickable="true"
+                        android:onClick="addIngredient"
+                        android:layout_column="17" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:layout_width="221dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/addTypeText"
+                        android:editable="true"
+                        android:hint="tap to add type" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add Type"
+                        android:id="@+id/addType"
+                        android:layout_column="17"
+                        android:onClick="onClickAddType" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:layout_width="77dp"
+                        android:layout_height="match_parent"
+                        android:text="Save"
+                        android:id="@+id/button3"
+                        android:layout_gravity="right"
+                        android:onClick="save"
+                        android:layout_column="17" />
+                </TableRow>
+
+            </TableLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:weightSum="1">
 
             </LinearLayout>
 

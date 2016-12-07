@@ -1,9 +1,7 @@
 package ca.uottawa.cookapp;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,9 +14,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by shawnco on 11/30/16.
- */
 public class RecipeActivity extends AppCompatActivity {
 
     Drawable drawable;
@@ -113,9 +108,7 @@ public class RecipeActivity extends AppCompatActivity {
             case R.id.edit_recipe:
                 setEditable();
                 break;
-            case R.id.deletebutton:
 
-                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -146,7 +139,7 @@ public class RecipeActivity extends AppCompatActivity {
             FavouriteRecipeManager.getList().remove(data);
         }
         finish();
-        
+
     }
 
     public void unfavouriteRecipe(int data) {
