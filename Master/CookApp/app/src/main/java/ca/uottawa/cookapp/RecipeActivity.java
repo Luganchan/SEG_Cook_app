@@ -30,9 +30,14 @@ public class RecipeActivity extends AppCompatActivity {
 
         final int data = getIntent().getExtras().getInt("recipeIndex");
 
-        int position =getIntent().getExtras().getInt("recipeIndex");
-        recipe = RecipeManager.getList().get(position);
+        if ( getIntent().getStringExtra("Class").equals("Recipes")){
+            int position = getIntent().getExtras().getInt("recipeIndex");
+            recipe = RecipeManager.getList().get(position);
+        }else{
+            int position = getIntent().getExtras().getInt("FavouritesRecipeIndex");
+            recipe = FavouriteRecipeManager.getList().get(position);
 
+        }
 
         //setTitle(RecipeManager.recipeList);
 // Get ListView object from xml layout
@@ -133,7 +138,7 @@ public class RecipeActivity extends AppCompatActivity {
     public void favouriteRecipe(int data){
         Recipe favourite = RecipeManager.getList().get(data);
         favourite.setIsFavourite();
-        FavouriteRecipeManager.updateFavourites();
+        FavouriteRecipeManager.getList().add(favourite);
     }
 
 

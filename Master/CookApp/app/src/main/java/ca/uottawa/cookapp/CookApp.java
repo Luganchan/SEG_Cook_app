@@ -335,7 +335,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
 
     public static class RecipesListFragment extends Fragment{
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view =  inflater.inflate(R.layout.cook_app_fragments, container, false);
             ListView listView = (ListView) view.findViewById(R.id.list);
 
@@ -349,6 +349,7 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Intent intent = new Intent (getContext(),RecipeActivity.class);
                     intent.putExtra("recipeIndex",position);
+                    intent.putExtra("Class", "Recipes");
                     startActivityForResult(intent,262);
 
                 }
@@ -382,8 +383,10 @@ public class CookApp extends AppCompatActivity implements SearchView.OnQueryText
                 @Override
                 public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                     Intent intent = new Intent (getContext(),RecipeActivity.class);
-                    intent.putExtra("recipeIndex",position);
-                    startActivityForResult(intent,0);
+                    intent.putExtra("favouritesRecipeIndex",position);
+                    intent.putExtra("Class", "Favourites");
+
+                    startActivityForResult(intent,5);
                 }
             });
 
